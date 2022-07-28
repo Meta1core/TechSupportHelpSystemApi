@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -8,15 +10,15 @@ namespace TechSupportHelpSystem.Controllers
     [Route("[controller]")]
     public class RoomsController : ControllerBase
     {
-        IRoomService roomService = new RoomService();
+        IRoomService RoomService = new RoomService();
         // GET: RoomsController
         [HttpGet]
-        public async Task<string> Index()
+        public async Task<List<Room>> Index()
         {
             string roomName = "US1";
-            return await Task<string>.Factory.StartNew(() =>
+            return await Task<List<Room>>.Factory.StartNew(() =>
             {
-                return roomName;
+                return RoomService.GetRooms();
             });
         }
     }
