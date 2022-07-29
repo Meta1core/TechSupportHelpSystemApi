@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Services;
@@ -18,10 +19,10 @@ namespace TechSupportHelpSystem.Controllers
         }
 
         // GET api/<ClientsController>/5
-        [HttpGet("{id}")]
-        public Client Get(int id)
+        [HttpGet("{id_Client}")]
+        public Client Get(int id_Client)
         {
-            return ClientService.GetClient(id);
+            return ClientService.GetClient(id_Client);
         }
 
         // POST api/<ClientsController>

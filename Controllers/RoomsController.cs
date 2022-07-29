@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Services;
 
@@ -12,14 +11,10 @@ namespace TechSupportHelpSystem.Controllers
     {
         IRoomService RoomService = new RoomService();
         // GET: RoomsController
-        [HttpGet]
-        public async Task<List<Room>> Index()
+        [HttpGet("{id}")]
+        public List<Room> Get(int id)
         {
-            string roomName = "US1";
-            return await Task<List<Room>>.Factory.StartNew(() =>
-            {
-                return RoomService.GetRooms();
-            });
+            return RoomService.GetRooms(id);
         }
     }
 }

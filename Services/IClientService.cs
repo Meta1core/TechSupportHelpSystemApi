@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
@@ -6,7 +7,8 @@ namespace TechSupportHelpSystem.Services
     interface IClientService
     {
         List<Client> GetClients();
-        Client GetClient(int id_client);
+        Client GetClient(int id_Client);
+        DbContextOptions GetClientOptions(Client client);
 
     }
 }

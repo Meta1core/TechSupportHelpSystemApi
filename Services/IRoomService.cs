@@ -5,7 +5,7 @@ namespace TechSupportHelpSystem.Services
 {
     interface IRoomService
     {
-        List<Room> GetRooms();
+        List<Room> GetRooms(int id_Сlient);
         Room GetRoom();
         Room UpdateRoom();
         Room DeleteRoom();

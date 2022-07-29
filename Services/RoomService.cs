@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
 {
     public class RoomService : IRoomService
     {
+        IClientService ClientService = new ClientService();
         public Room CreateRoom()
         {
             throw new NotImplementedException();
@@ -21,9 +25,16 @@ namespace TechSupportHelpSystem.Services
             throw new NotImplementedException();
         }
 
-        public List<Room> GetRooms()
+        public List<Room> GetRooms(int id_Client)
         {
-            throw new NotImplementedException();
+            List<Room> rooms;
+            Client client =  ClientService.GetClient(id_Client);
+            DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+            using (ApplicationContext db = new ApplicationContext(clientOptions))
+            {
+                rooms = db.Schdlr_Resource.ToList();
+            }
+            return rooms;
         }
 
         public Room UpdateRoom()
