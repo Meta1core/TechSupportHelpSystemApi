@@ -1,13 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.DAO;
 
 namespace TechSupportHelpSystem.DAL
 {
     public class ApplicationContext : DbContext
     {
         public DbSet<Client> Client { get; set; }
-
         public DbSet<Room> Schdlr_Resource { get; set; }
+        public DbSet<Modality> Modality { get; set; }
+        public DbSet<ProcedureRef> ProcedureRef { get; set; }
+        public DbSet<RoomToProcedure> Schdlr_ResourceProcedureref { get; set; }
+
 
         public ApplicationContext(DbContextOptions options)
              : base(options)
