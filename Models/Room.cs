@@ -14,6 +14,7 @@ namespace TechSupportHelpSystem.Models
         public int? SlotsTime { get; set; }
         public int? Sequence { get; set; }
         public int? SlotsTimeOff { get; set; }
+        public int? StepValue { get; set; }
 
     }
 }
