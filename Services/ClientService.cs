@@ -10,6 +10,16 @@ namespace TechSupportHelpSystem.Services
 {
     public class ClientService : IClientService
     {
+        public Client FindClientByPrefix(string prefix)
+        {
+            Client client;
+            using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+            {
+                client = db.Client.Where(c => c.Prefix == prefix).FirstOrDefault();
+            }
+            return client;
+        }
+
         public Client GetClient(int id_Client)
         {
             Client client;

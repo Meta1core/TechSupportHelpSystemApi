@@ -8,7 +8,7 @@ namespace TechSupportHelpSystem.Services
     {
         List<Client> GetClients();
         Client GetClient(int id_Client);
+        Client FindClientByPrefix(string prefix);
         DbContextOptions GetClientOptions(Client client);
-
     }
 }

@@ -9,7 +9,7 @@ namespace TechSupportHelpSystem.Models
         public string Name { get; set; }
         public string? Code { get; set; }
         public string? CodeEx { get; set; }
-        public int? IsHidden { get; set; }
+        public bool? IsHidden { get; set; }
         public string? Color { get; set; }
         public string? FHIRCode { get; set; }
         public int? Order { get; set; }

@@ -11,7 +11,7 @@ namespace TechSupportHelpSystem.DAL
         public DbSet<Modality> Modality { get; set; }
         public DbSet<ProcedureRef> ProcedureRef { get; set; }
         public DbSet<RoomToProcedure> Schdlr_ResourceProcedureref { get; set; }
-
+        public DbSet<Clinic> Clinic { get; set; }
 
         public ApplicationContext(DbContextOptions options)
              : base(options)

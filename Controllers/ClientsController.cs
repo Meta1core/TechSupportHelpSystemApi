@@ -17,5 +17,11 @@ namespace TechSupportHelpSystem.Controllers
             return ClientService.GetClients();
         }
 
+        // GET: api/<ClientsController>
+        [HttpGet("{prefix}")]
+        public Client Get(string prefix)
+        {
+            return ClientService.FindClientByPrefix(prefix);
+        }
     }
 }
