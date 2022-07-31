@@ -19,6 +19,12 @@ namespace TechSupportHelpSystem.DAL
             Database.EnsureCreated();
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<RoomToProcedure>()
+                .HasKey(c => new { c.ID_Resource, c.ID_ProcedureRef });
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    IConfigurationRoot configuration = new ConfigurationBuilder()

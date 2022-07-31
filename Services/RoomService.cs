@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.DAO;
 
 namespace TechSupportHelpSystem.Services
 {
@@ -60,14 +61,15 @@ namespace TechSupportHelpSystem.Services
         {
             try
             {
+                List<ProcedureRef> procedures = new List<ProcedureRef>();
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    List<ProcedureRef> procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality).ToList();
-                    var query = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality).Include(x => id_Modality);
+                    procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality).ToList();
+                    ProcessServicesToRoom(procedures, id_Room, db);
                 }
-                return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
             catch (Exception e)
             {
@@ -76,6 +78,15 @@ namespace TechSupportHelpSystem.Services
                 httpResponse.ReasonPhrase = e.InnerException.Message;
                 return httpResponse;
             }
+        }
+
+        public void ProcessServicesToRoom(List<ProcedureRef> procedureRefs, int id_Room, ApplicationContext db)
+        {
+            foreach(ProcedureRef pr in procedureRefs)
+            {
+                db.Add(new RoomToProcedure() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Resource = id_Room });
+            }
+            db.SaveChanges();
         }
 
         public Room GetRoom(int id_Client, int id_Room)
