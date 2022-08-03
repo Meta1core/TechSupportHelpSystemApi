@@ -8,10 +8,10 @@ using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
 {
-    public class CashService : ICashService
+    public class TeachingCollectionService : ITeachingCollectionService
     {
         IClientService ClientService = new ClientService();
-        public HttpResponseMessage AddCashSchedule(int id_Client, CashSchedule cashSchedule)
+        public HttpResponseMessage AddTeachingCollection(int id_Client, TeachingCollection teachingCollection)
         {
             try
             {
@@ -19,7 +19,8 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    db.Cash_Fee_Schedule.Add(cashSchedule);
+                    teachingCollection.ID_TeachingCollection = GetLastInsertedId(db);
+                    db.TeachingCollection.Add(teachingCollection);
                     db.SaveChanges();
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
@@ -33,7 +34,13 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage DeleteCashSchedule(int id_Client, int id_CashSchedule)
+        private int GetLastInsertedId(ApplicationContext db)
+        {
+            TeachingCollection lastTeachingCollectionElem = db.TeachingCollection.OrderByDescending(p => p.ID_TeachingCollection).FirstOrDefault();
+            return (int)(lastTeachingCollectionElem.ID_TeachingCollection + 1);
+        }
+
+        public HttpResponseMessage DeleteTeachingCollection(int id_Client, int id_TeachingCollection)
         {
             try
             {
@@ -41,7 +48,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    db.Cash_Fee_Schedule.Remove(db.Cash_Fee_Schedule.Where(c => c.ID_CashSchedule == id_CashSchedule).FirstOrDefault());
+                    db.TeachingCollection.Remove(db.TeachingCollection.Where(c => c.ID_TeachingCollection == id_TeachingCollection).FirstOrDefault());
                     db.SaveChanges();
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
@@ -55,7 +62,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage EditCashSchedule(int id_Client, CashSchedule cashSchedule)
+        public HttpResponseMessage EditTeachingCollection(int id_Client, TeachingCollection teachingCollection)
         {
             try
             {
@@ -63,9 +70,8 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    CashSchedule cashFromDatabase = db.Cash_Fee_Schedule.Where(r => r.ID_CashSchedule == cashSchedule.ID_CashSchedule).FirstOrDefault();
-                    cashFromDatabase.IsHidden = cashSchedule.IsHidden;
-                    cashFromDatabase.Name = cashSchedule.Name;
+                    TeachingCollection teachingCollectionFromDatabase = db.TeachingCollection.Where(r => r.ID_TeachingCollection == teachingCollection.ID_TeachingCollection).FirstOrDefault();
+                    teachingCollectionFromDatabase.Name = teachingCollection.Name;
                     db.SaveChanges();
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
@@ -79,7 +85,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public List<CashSchedule> GetCashSchedules(int id_Client)
+        public List<TeachingCollection> GetTeachingCollections(int id_Client)
         {
             try
             {
@@ -87,7 +93,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    return db.Cash_Fee_Schedule.ToList();
+                    return db.TeachingCollection.ToList();
                 }
             }
             catch (Exception e)

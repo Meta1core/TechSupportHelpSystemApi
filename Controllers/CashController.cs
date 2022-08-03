@@ -11,28 +11,28 @@ namespace TechSupportHelpSystem.Controllers
     public class CashController : ControllerBase
     {
         ICashService CashService = new CashService();
-        // GET: api/<CashController>
+        // GET: <CashController>
         [HttpGet("{id_Client}")]
         public List<CashSchedule> Get(int id_Client)
         {
             return CashService.GetCashSchedules(id_Client);
         }
 
-        // POST api/<CashController>
+        // POST <CashController>
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post(int id_Client, [FromBody] CashSchedule cashSchedule)
         {
             return CashService.AddCashSchedule(id_Client, cashSchedule);
         }
 
-        // PUT api/<CashController>/5
+        // PUT <CashController>/5
         [HttpPut("{id_Client}")]
         public HttpResponseMessage Put(int id_Client, [FromBody] CashSchedule cashSchedule)
         {
             return CashService.EditCashSchedule(id_Client, cashSchedule);
         }
 
-        // DELETE api/<CashController>/5
+        // DELETE CashController>/5
         [HttpDelete("{id_Client}/{id_CashSchedule}")]
         public HttpResponseMessage Delete(int id_Client, int id_CashSchedule)
         {

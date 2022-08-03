@@ -14,8 +14,8 @@ namespace TechSupportHelpSystem.DAL
         public DbSet<ProceduresToRoom> Schdlr_ResourceProcedureref { get; set; }
         public DbSet<Clinic> Clinic { get; set; }
         public DbSet<ProceduresToClinic> ProcedureRef_Clinic { get; set; }
-
         public DbSet<CashSchedule> Cash_Fee_Schedule { get; set; }
+        public DbSet<TeachingCollection> TeachingCollection { get; set; }
 
         public ApplicationContext(DbContextOptions options)
              : base(options)

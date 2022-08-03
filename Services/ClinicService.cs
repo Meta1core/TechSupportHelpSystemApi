@@ -21,7 +21,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    db.Add(clinic);
+                    db.Clinic.Add(clinic);
                     db.SaveChanges();
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.Created);
