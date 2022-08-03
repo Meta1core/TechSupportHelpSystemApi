@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.POCO;
 
 namespace TechSupportHelpSystem.Services
 {
@@ -70,11 +70,18 @@ namespace TechSupportHelpSystem.Services
 
         public List<Clinic> GetClinics(int id_Сlient)
         {
-            Client client = ClientService.GetClient(id_Сlient);
-            DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-            using (ApplicationContext db = new ApplicationContext(clientOptions))
+            try
             {
-                return db.Clinic.ToList();
+                Client client = ClientService.GetClient(id_Сlient);
+                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+                using (ApplicationContext db = new ApplicationContext(clientOptions))
+                {
+                    return db.Clinic.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                return null; // Nlog
             }
         }
 
@@ -107,6 +114,76 @@ namespace TechSupportHelpSystem.Services
                 httpResponse.ReasonPhrase = e.InnerException.Message;
                 return httpResponse;
             }
+        }
+        public HttpResponseMessage EditClinicProcedures(int id_Client, int id_Clinic, int? id_Modality)
+        {
+            try
+            {
+                List<ProcedureRef> procedures = new List<ProcedureRef>();
+                Client client = ClientService.GetClient(id_Client);
+                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+                using (ApplicationContext db = new ApplicationContext(clientOptions))
+                {
+                    procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality && p.IsHidden == false).ToList();
+                    ProcessServicesToClinic(procedures, id_Clinic, db);
+                }
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                HttpResponseMessage httpResponse = new HttpResponseMessage();
+                httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                httpResponse.ReasonPhrase = e.InnerException.Message;
+                return httpResponse;
+            }
+        }
+
+        public void ProcessServicesToClinic(List<ProcedureRef> procedureRefs, int id_Clinic, ApplicationContext db)
+        {
+            foreach (ProcedureRef pr in procedureRefs)
+            {
+                db.ProcedureRef_Clinic.Add(new ProceduresToClinic() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Clinic = id_Clinic });
+            }
+            db.SaveChanges();
+        }
+
+        public HttpResponseMessage DeleteClinicProcedures(int id_Client, int id_Clinic, int? id_Modality)
+        {
+            try
+            {
+                Client client = ClientService.GetClient(id_Client);
+                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+                ApplicationContext db = new ApplicationContext(clientOptions);
+                DeleteProceduresFromDatabase(id_Clinic, db, id_Modality);
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                HttpResponseMessage httpResponse = new HttpResponseMessage();
+                httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                httpResponse.ReasonPhrase = e.InnerException.Message;
+                return httpResponse;
+            }
+        }
+        private void DeleteProceduresFromDatabase(int id_Clinic, ApplicationContext db, int? id_Modality)
+        {
+            List<ProceduresToClinic> procedures = new List<ProceduresToClinic>();
+            if (id_Modality.HasValue)
+            {
+                procedures = (from p in db.ProcedureRef_Clinic
+                              join p1 in db.ProcedureRef on p.ID_ProcedureRef equals p1.ID_ProcedureRef
+                              where p1.ID_Modality == id_Modality && p.ID_Clinic == id_Clinic
+                              select p).ToList();
+            }
+            else
+            {
+                procedures = (from p in db.ProcedureRef_Clinic
+                              join p1 in db.ProcedureRef on p.ID_ProcedureRef equals p1.ID_ProcedureRef
+                              where p.ID_Clinic == id_Clinic
+                              select p).ToList();
+            }
+            db.ProcedureRef_Clinic.RemoveRange(procedures);
+            db.SaveChanges();
         }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading.Tasks;
 using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
@@ -14,5 +11,7 @@ namespace TechSupportHelpSystem.Services
         HttpResponseMessage UpdateClinic(int id_Client, Clinic clinic);
         HttpResponseMessage DeleteClinic(int id_Client, int clinic);
         HttpResponseMessage CreateClinic(int id_Client, Clinic clinic);
+        HttpResponseMessage EditClinicProcedures(int id_Client, int id_Clinic, int? id_Modality);
+        HttpResponseMessage DeleteClinicProcedures(int id_Client, int id_Clinic, int? id_Modality);
     }
 }

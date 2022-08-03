@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Services;
 
@@ -46,6 +43,20 @@ namespace TechSupportHelpSystem.Controllers
         public HttpResponseMessage Delete(int id_Client, int id_Clinic)
         {
             return ClinicService.DeleteClinic(id_Client, id_Clinic);
+        }
+
+        // GET: ClinicsController/id_Client/id_Clinic/id_Modality
+        [HttpGet("{id_Client}/{id_Clinic}/{id_Modality}")]
+        public HttpResponseMessage Get(int id_Client, int id_Clinic, int? id_Modality)
+        {
+            return ClinicService.EditClinicProcedures(id_Client, id_Clinic, id_Modality);
+        }
+
+        // GET: ClinicsController/id_Client/id_Clinic/id_Modality
+        [HttpDelete("{id_Client}/{id_Clinic}/{id_Modality}")]
+        public HttpResponseMessage Delete(int id_Client, int id_Clinic, int? id_Modality)
+        {
+            return ClinicService.DeleteClinicProcedures(id_Client, id_Clinic, id_Modality);
         }
     }
 }

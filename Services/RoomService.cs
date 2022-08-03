@@ -66,7 +66,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality).ToList();
+                    procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality && p.IsHidden == false).ToList();
                     ProcessServicesToRoom(procedures, id_Room, db);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
@@ -82,9 +82,9 @@ namespace TechSupportHelpSystem.Services
 
         public void ProcessServicesToRoom(List<ProcedureRef> procedureRefs, int id_Room, ApplicationContext db)
         {
-            foreach(ProcedureRef pr in procedureRefs)
+            foreach (ProcedureRef pr in procedureRefs)
             {
-                db.Add(new RoomToProcedure() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Resource = id_Room });
+                db.Schdlr_ResourceProcedureref.Add(new ProceduresToRoom() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Resource = id_Room });
             }
             db.SaveChanges();
         }

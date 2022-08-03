@@ -26,8 +26,8 @@ namespace TechSupportHelpSystem.Controllers
         }
 
         // GET: RoomsController/id_Client/id_Room
-        [HttpGet("{id_Client}/{id_Room}/{id_Modality}")]
-        public HttpResponseMessage Get(int id_Client, int id_Room, int id_Modality)
+        [HttpDelete("{id_Client}/{id_Room}/{id_Modality}")]
+        public HttpResponseMessage Delete(int id_Client, int id_Room, int id_Modality)
         {
             return RoomService.EditRoomProcedures(id_Client, id_Room, id_Modality);
         }
