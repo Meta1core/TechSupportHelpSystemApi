@@ -16,6 +16,7 @@ namespace TechSupportHelpSystem.DAL
         public DbSet<ProceduresToClinic> ProcedureRef_Clinic { get; set; }
         public DbSet<CashSchedule> Cash_Fee_Schedule { get; set; }
         public DbSet<TeachingCollection> TeachingCollection { get; set; }
+        public DbSet<Configuration> Configuration { get; set; }
 
         public ApplicationContext(DbContextOptions options)
              : base(options)
@@ -29,14 +30,8 @@ namespace TechSupportHelpSystem.DAL
                 .HasKey(c => new { c.ID_Resource, c.ID_ProcedureRef });
             modelBuilder.Entity<ProceduresToClinic>()
                 .HasKey(c => new { c.ID_ProcedureRef, c.ID_Clinic });
+            modelBuilder.Entity<Configuration>()
+                .HasNoKey();
         }
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    IConfigurationRoot configuration = new ConfigurationBuilder()
-        //        .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-        //        .AddJsonFile("appsettings.json")
-        //        .Build();
-        //    optionsBuilder.UseMySql(configuration.GetConnectionString("MasterDatabase"), new MySqlServerVersion(new Version(5, 7)));
-        //}
     }
 }
