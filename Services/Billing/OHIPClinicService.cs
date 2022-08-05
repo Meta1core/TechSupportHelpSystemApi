@@ -75,7 +75,9 @@ namespace TechSupportHelpSystem.Services
                     ohipClinicGroupNumber.ID_MOHOffice = clinic.ID_MOHOffice;
                     ohipClinicGroupNumber.EDSUserMUID = clinic.EDSUserMUID;
                     ohipClinicGroupNumber.SLI = clinic.SLI;
+                    EditGroupNumberOnExistsProcedures(clinicOptionsFromDatabase, db, clinic);
                     db.Remove(clinicOptionsFromDatabase);
+                    DeleteOldProcedures(db, clinic);
                     db.Ohip_ClinicNumber.Add(ohipClinicGroupNumber);
                     db.SaveChanges();
                 }
@@ -88,6 +90,22 @@ namespace TechSupportHelpSystem.Services
                 httpResponse.ReasonPhrase = e.InnerException.Message;
                 return httpResponse;
             }
+        }
+        public void DeleteOldProcedures(ApplicationContext db, OHIPEditClinicNumber newClinicOptions)
+        {
+            if (db.Ohip_ClinicNumberProc.Where(p => p.GroupNumber == newClinicOptions.OldGroupNumber && p.ID_Clinic == newClinicOptions.ID_Clinic).ToList() is not null)
+            {
+                db.Ohip_ClinicNumberProc.RemoveRange(db.Ohip_ClinicNumberProc.Where(p => p.GroupNumber == newClinicOptions.OldGroupNumber && p.ID_Clinic == newClinicOptions.ID_Clinic));
+                db.SaveChanges();
+            }
+        }
+        public void EditGroupNumberOnExistsProcedures(OHIPClinicGroupNumber clinicOptions, ApplicationContext db, OHIPEditClinicNumber newClinicOptions)
+        {
+            List<OHIPClinicNumberProcedure> procedures = db.Ohip_ClinicNumberProc.Where(p => p.GroupNumber == clinicOptions.GroupNumber && p.ID_Clinic == clinicOptions.ID_Clinic).ToList();
+            foreach (OHIPClinicNumberProcedure e in procedures) e.GroupNumber = newClinicOptions.GroupNumber;
+            db.AddRange(procedures);
+            db.SaveChanges();
+            db.Entry(clinicOptions).State = EntityState.Detached;
         }
 
         public List<OHIPClinicGroupNumber> GetClinicOptions(int id_Client, int id_Clinic)

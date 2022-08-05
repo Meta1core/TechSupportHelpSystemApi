@@ -18,6 +18,7 @@ namespace TechSupportHelpSystem.DAL
         public DbSet<TeachingCollection> TeachingCollection { get; set; }
         public DbSet<Configuration> Configuration { get; set; }
         public DbSet<OHIPClinicGroupNumber> Ohip_ClinicNumber { get; set; }
+        public DbSet<OHIPClinicNumberProcedure> Ohip_ClinicNumberProc { get; set; }
 
         public ApplicationContext(DbContextOptions options)
              : base(options)
@@ -35,6 +36,8 @@ namespace TechSupportHelpSystem.DAL
                 .HasKey(c => new { c.ParameterName });
             modelBuilder.Entity<OHIPClinicGroupNumber>()
                 .HasKey(c => new { c.ID_Clinic, c.GroupNumber });
+            modelBuilder.Entity<OHIPClinicNumberProcedure>()
+                .HasKey(c => new { c.ID_Clinic, c.GroupNumber, c.ID_ProcedureRef });
         }
     }
 }
