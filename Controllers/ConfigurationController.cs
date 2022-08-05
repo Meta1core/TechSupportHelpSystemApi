@@ -25,17 +25,5 @@ namespace TechSupportHelpSystem.Controllers
         {
             return ConfigurationService.EditConfigurationParam(id_Client, configuration);
         }
-
-        // PUT api/<ConfigurationController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ConfigurationController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

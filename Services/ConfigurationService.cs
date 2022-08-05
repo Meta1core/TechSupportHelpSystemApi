@@ -39,6 +39,7 @@ namespace TechSupportHelpSystem.Services
                     if (db.Configuration.Where(c => c.ParameterName == configuration.ParameterName).FirstOrDefault() is null)
                     {
                         db.Configuration.Add(configuration);
+                        db.Entry(configuration).State = EntityState.Added;
                         db.SaveChanges();
                     }
                     else
@@ -46,6 +47,7 @@ namespace TechSupportHelpSystem.Services
                         Configuration configurationFromDatabase = db.Configuration.Where(c => c.ParameterName == configuration.ParameterName).FirstOrDefault();
                         configurationFromDatabase.ParameterValue = configuration.ParameterValue;
                         configurationFromDatabase.ID_Clinic = configuration.ID_Clinic;
+                        db.Entry(configurationFromDatabase).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                 }
