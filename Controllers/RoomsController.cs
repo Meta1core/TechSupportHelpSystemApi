@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
 using TechSupportHelpSystem.Models;
@@ -8,6 +9,7 @@ namespace TechSupportHelpSystem.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class RoomsController : ControllerBase
     {
         IRoomService RoomService = new RoomService();

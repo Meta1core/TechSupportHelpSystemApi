@@ -8,20 +8,19 @@ namespace TechSupportHelpSystem.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class ClientsController : ControllerBase
     {
         IClientService ClientService = new ClientService();
-        // GET: api/<ClientsController>
+        // GET: <ClientsController>
         [HttpGet]
-        [Authorize]
         public List<Client> Get()
         {
             return ClientService.GetClients();
         }
 
-        // GET: api/<ClientsController>
+        // GET: <ClientsController>
         [HttpGet("{prefix}")]
-        [Authorize]
         public Client Get(string prefix)
         {
             return ClientService.FindClientByPrefix(prefix);

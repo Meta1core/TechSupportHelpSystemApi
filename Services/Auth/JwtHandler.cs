@@ -16,7 +16,7 @@ namespace TechSupportHelpSystem.Services.Auth
         public JwtHandler(IConfiguration configuration)
         {
             _configuration = configuration;
-            _jwtSettings = _configuration.GetSection("JwtSettings");
+            _jwtSettings = _configuration.GetSection("JWTSettings");
         }
         public SigningCredentials GetSigningCredentials()
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
 using TechSupportHelpSystem.Models;
@@ -10,6 +11,7 @@ namespace TechSupportHelpSystem.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class ConfigurationController : ControllerBase
     {
         ConfigurationService ConfigurationService = new ConfigurationService();

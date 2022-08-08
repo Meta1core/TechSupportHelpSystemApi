@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
 using TechSupportHelpSystem.Models;
@@ -8,9 +9,11 @@ namespace TechSupportHelpSystem.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class ClinicsController : ControllerBase
     {
         IClinicService ClinicService = new ClinicService();
+
         // GET: api/<ClinicsController>
         [HttpGet("{id_Client}/")]
         public List<Clinic> Get(int id_Client)
