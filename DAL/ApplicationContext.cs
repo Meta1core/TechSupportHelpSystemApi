@@ -11,9 +11,9 @@ namespace TechSupportHelpSystem.DAL
         public DbSet<Room> Schdlr_Resource { get; set; }
         public DbSet<Modality> Modality { get; set; }
         public DbSet<ProcedureRef> ProcedureRef { get; set; }
-        public DbSet<ProceduresToRoom> Schdlr_ResourceProcedureref { get; set; }
+        public DbSet<ProceduresToRoomDto> Schdlr_ResourceProcedureref { get; set; }
         public DbSet<Clinic> Clinic { get; set; }
-        public DbSet<ProceduresToClinic> ProcedureRef_Clinic { get; set; }
+        public DbSet<ProceduresToClinicDto> ProcedureRef_Clinic { get; set; }
         public DbSet<CashSchedule> Cash_Fee_Schedule { get; set; }
         public DbSet<TeachingCollection> TeachingCollection { get; set; }
         public DbSet<Configuration> Configuration { get; set; }
@@ -28,9 +28,9 @@ namespace TechSupportHelpSystem.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProceduresToRoom>()
+            modelBuilder.Entity<ProceduresToRoomDto>()
                 .HasKey(c => new { c.ID_Resource, c.ID_ProcedureRef });
-            modelBuilder.Entity<ProceduresToClinic>()
+            modelBuilder.Entity<ProceduresToClinicDto>()
                 .HasKey(c => new { c.ID_ProcedureRef, c.ID_Clinic });
             modelBuilder.Entity<Configuration>()
                 .HasKey(c => new { c.ParameterName });

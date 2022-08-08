@@ -142,7 +142,7 @@ namespace TechSupportHelpSystem.Services
         {
             foreach (ProcedureRef pr in procedureRefs)
             {
-                db.ProcedureRef_Clinic.Add(new ProceduresToClinic() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Clinic = id_Clinic });
+                db.ProcedureRef_Clinic.Add(new ProceduresToClinicDto() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Clinic = id_Clinic });
             }
             db.SaveChanges();
         }
@@ -167,7 +167,7 @@ namespace TechSupportHelpSystem.Services
         }
         private void DeleteProceduresFromDatabase(int id_Clinic, ApplicationContext db, int? id_Modality)
         {
-            List<ProceduresToClinic> procedures = new List<ProceduresToClinic>();
+            List<ProceduresToClinicDto> procedures = new List<ProceduresToClinicDto>();
             if (id_Modality.HasValue)
             {
                 procedures = (from p in db.ProcedureRef_Clinic

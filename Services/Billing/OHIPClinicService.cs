@@ -58,7 +58,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage EditClinicOptions(int id_Client, OHIPEditClinicNumber clinic)
+        public HttpResponseMessage EditClinicOptions(int id_Client, OHIPEditClinicNumberDto clinic)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace TechSupportHelpSystem.Services
                 return httpResponse;
             }
         }
-        public void DeleteOldProcedures(ApplicationContext db, OHIPEditClinicNumber newClinicOptions)
+        public void DeleteOldProcedures(ApplicationContext db, OHIPEditClinicNumberDto newClinicOptions)
         {
             if (db.Ohip_ClinicNumberProc.Where(p => p.GroupNumber == newClinicOptions.OldGroupNumber && p.ID_Clinic == newClinicOptions.ID_Clinic).ToList() is not null)
             {
@@ -99,7 +99,7 @@ namespace TechSupportHelpSystem.Services
                 db.SaveChanges();
             }
         }
-        public void EditGroupNumberOnExistsProcedures(OHIPClinicGroupNumber clinicOptions, ApplicationContext db, OHIPEditClinicNumber newClinicOptions)
+        public void EditGroupNumberOnExistsProcedures(OHIPClinicGroupNumber clinicOptions, ApplicationContext db, OHIPEditClinicNumberDto newClinicOptions)
         {
             List<OHIPClinicNumberProcedure> procedures = db.Ohip_ClinicNumberProc.Where(p => p.GroupNumber == clinicOptions.GroupNumber && p.ID_Clinic == clinicOptions.ID_Clinic).ToList();
             foreach (OHIPClinicNumberProcedure e in procedures) e.GroupNumber = newClinicOptions.GroupNumber;

@@ -84,7 +84,7 @@ namespace TechSupportHelpSystem.Services
         {
             foreach (ProcedureRef pr in procedureRefs)
             {
-                db.Schdlr_ResourceProcedureref.Add(new ProceduresToRoom() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Resource = id_Room });
+                db.Schdlr_ResourceProcedureref.Add(new ProceduresToRoomDto() { ID_ProcedureRef = pr.ID_ProcedureRef, ID_Resource = id_Room });
             }
             db.SaveChanges();
         }

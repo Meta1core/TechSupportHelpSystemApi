@@ -11,7 +11,7 @@ namespace TechSupportHelpSystem.Services
 
         public List<OHIPClinicGroupNumber> GetClinicOptions(int id_Client, int id_Clinic);
 
-        public HttpResponseMessage EditClinicOptions(int id_Client, OHIPEditClinicNumber clinic);
+        public HttpResponseMessage EditClinicOptions(int id_Client, OHIPEditClinicNumberDto clinic);
 
         public HttpResponseMessage AddClinicOptions(int id_Client, OHIPClinicGroupNumber clinic);
 

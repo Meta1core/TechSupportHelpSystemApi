@@ -1,6 +1,6 @@
 ﻿namespace TechSupportHelpSystem.Models.POCO
 {
-    public class OHIPEditClinicNumber
+    public class OHIPEditClinicNumberDto
     {
         public int ID_Clinic { get; set; }
         public string GroupNumber { get; set; }

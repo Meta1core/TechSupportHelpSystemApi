@@ -37,7 +37,7 @@ namespace TechSupportHelpSystem.Controllers
 
         // PUT api/<OhipBillingController>/5
         [HttpPut("{id_Client}")]
-        public HttpResponseMessage Put([FromBody] OHIPEditClinicNumber clinicOptions, int id_Client)
+        public HttpResponseMessage Put([FromBody] OHIPEditClinicNumberDto clinicOptions, int id_Client)
         {
             return OHIPClinicService.EditClinicOptions(id_Client, clinicOptions);
         }

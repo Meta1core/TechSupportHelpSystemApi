@@ -41,7 +41,8 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    db.Cash_Fee_Schedule.Remove(db.Cash_Fee_Schedule.Where(c => c.ID_CashSchedule == id_CashSchedule).FirstOrDefault());
+                    CashSchedule cashFromDatabase = db.Cash_Fee_Schedule.Where(c => c.ID_CashSchedule == id_CashSchedule).FirstOrDefault();
+                    cashFromDatabase.IsHidden = true;
                     db.SaveChanges();
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
