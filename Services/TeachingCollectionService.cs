@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using TechSupportHelpSystem.DAL;
+using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
@@ -11,7 +12,7 @@ namespace TechSupportHelpSystem.Services
     public class TeachingCollectionService : ITeachingCollectionService
     {
         IClientService ClientService = new ClientService();
-        public HttpResponseMessage AddTeachingCollection(int id_Client, TeachingCollection teachingCollection)
+        public HttpResponseMessage AddTeachingCollection(int id_Client, TeachingCollection teachingCollection, string username)
         {
             try
             {
@@ -22,6 +23,7 @@ namespace TechSupportHelpSystem.Services
                     teachingCollection.ID_TeachingCollection = GetLastInsertedId(db);
                     db.TeachingCollection.Add(teachingCollection);
                     db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} added teaching collection with ID - {2} |Title - {3} ", id_Client, username, teachingCollection.ID_TeachingCollection, teachingCollection.Name);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
@@ -40,7 +42,7 @@ namespace TechSupportHelpSystem.Services
             return (int)(lastTeachingCollectionElem.ID_TeachingCollection + 1);
         }
 
-        public HttpResponseMessage DeleteTeachingCollection(int id_Client, int id_TeachingCollection)
+        public HttpResponseMessage DeleteTeachingCollection(int id_Client, int id_TeachingCollection, string username)
         {
             try
             {
@@ -48,8 +50,10 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    db.TeachingCollection.Remove(db.TeachingCollection.Where(c => c.ID_TeachingCollection == id_TeachingCollection).FirstOrDefault());
+                    TeachingCollection teachingCollection = db.TeachingCollection.Where(c => c.ID_TeachingCollection == id_TeachingCollection).FirstOrDefault();
+                    db.TeachingCollection.Remove(teachingCollection);
                     db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} deleted teaching collection with ID - {2} |Title - {3} ", id_Client, username, teachingCollection.ID_TeachingCollection, teachingCollection.Name);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
             }
@@ -62,7 +66,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage EditTeachingCollection(int id_Client, TeachingCollection teachingCollection)
+        public HttpResponseMessage EditTeachingCollection(int id_Client, TeachingCollection teachingCollection, string username)
         {
             try
             {
@@ -73,6 +77,7 @@ namespace TechSupportHelpSystem.Services
                     TeachingCollection teachingCollectionFromDatabase = db.TeachingCollection.Where(r => r.ID_TeachingCollection == teachingCollection.ID_TeachingCollection).FirstOrDefault();
                     teachingCollectionFromDatabase.Name = teachingCollection.Name;
                     db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} changed teaching collection with ID - {2} |New title - {3} ", id_Client, username, teachingCollection.ID_TeachingCollection, teachingCollection.Name);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }

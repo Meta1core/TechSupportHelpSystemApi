@@ -9,7 +9,7 @@ namespace TechSupportHelpSystem.Models
         public string Title { get; set; }
         public int ID_Clinic { get; set; }
         public string OpenTime { get; set; }
-        public string? Color { get; set; }
+        public string Color { get; set; }
         public int DefaultAppointmentDuration { get; set; }
         public int? SlotsTime { get; set; }
         public int? Sequence { get; set; }

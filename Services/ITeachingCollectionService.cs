@@ -7,8 +7,8 @@ namespace TechSupportHelpSystem.Services
     interface ITeachingCollectionService
     {
         public List<TeachingCollection> GetTeachingCollections(int id_Client);
-        public HttpResponseMessage AddTeachingCollection(int id_Client, TeachingCollection teachingCollection);
-        public HttpResponseMessage EditTeachingCollection(int id_Client, TeachingCollection teachingCollection);
-        public HttpResponseMessage DeleteTeachingCollection(int id_Client, int id_TeachingCollection);
+        public HttpResponseMessage AddTeachingCollection(int id_Client, TeachingCollection teachingCollection, string username);
+        public HttpResponseMessage EditTeachingCollection(int id_Client, TeachingCollection teachingCollection, string username);
+        public HttpResponseMessage DeleteTeachingCollection(int id_Client, int id_TeachingCollection, string username);
     }
 }

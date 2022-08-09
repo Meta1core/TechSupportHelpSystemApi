@@ -12,7 +12,13 @@ namespace TechSupportHelpSystem.Controllers
     [Authorize]
     public class CashController : ControllerBase
     {
-        ICashService CashService = new CashService();
+        ICashService CashService;
+
+        public CashController()
+        {
+            CashService = new CashService();
+        }
+
 
         // GET: <CashController>
         [HttpGet("{id_Client}")]

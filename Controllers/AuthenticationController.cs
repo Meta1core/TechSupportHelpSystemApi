@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Threading.Tasks;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DTO;
@@ -29,13 +25,13 @@ namespace TechSupportHelpSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserAuthenticationDto userAuthentication)
         {
-            bool isLogin = await AuthenticationService.Login(userAuthentication);
-            if (!isLogin)
+            AuthResponseDto authResponseDto = AuthenticationService.LoginActiveDirectory(userAuthentication);
+            if (!authResponseDto.IsAuthSuccessful)
             {
-                return Unauthorized(new AuthResponseDto { ErrorMessage = "Invalid Authentication" });
+                return Unauthorized(new AuthResponseDto { ErrorMessage = authResponseDto.ErrorMessage });
             }
             var signingCredentials = _jwtHandler.GetSigningCredentials();
-            var claims = _jwtHandler.GetClaims(new User() {Username = userAuthentication.Username, Password = userAuthentication.Password  });
+            var claims = _jwtHandler.GetClaims(new User() { Username = userAuthentication.Username, Password = userAuthentication.Password });
             var tokenOptions = _jwtHandler.GenerateTokenOptions(signingCredentials, claims);
             var token = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
             return Ok(new AuthResponseDto { IsAuthSuccessful = true, Token = token });

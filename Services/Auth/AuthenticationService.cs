@@ -1,27 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.DirectoryServices;
+using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models.DTO;
-using System.Data.Common;
-using MySqlConnector;
-
 namespace TechSupportHelpSystem.Services.Auth
 {
     public class AuthenticationService : IAuthenticationService
     {
-        public async Task<bool> Login(UserAuthenticationDto userAuthentication)
+        public AuthResponseDto LoginActiveDirectory(UserAuthenticationDto userAuthentication)
         {
             try
             {
-                String connString = "Server=10.169.100.55;Database=vi_112_amc;port=3306;User Id=" + userAuthentication.Username + ";password=" + userAuthentication.Password;
-                MySqlConnection conn = new MySqlConnection(connString);
-                await conn.OpenAsync();
-                return true;
+                SearchResultCollection results;
+                DirectorySearcher ds = null;
+                DirectoryEntry de = new DirectoryEntry("LDAP://10.190.100.250", userAuthentication.Username, userAuthentication.Password)
+                {
+                    AuthenticationType = AuthenticationTypes.FastBind
+                };
+                ds = new DirectorySearcher(de);
+                results = ds.FindAll();
+                if (results is not null)
+                {
+                    NLogger.Logger.Info("User " + userAuthentication.Username + " logged into the system!");
+                    return new AuthResponseDto() { IsAuthSuccessful = true };
+                }
+                return new AuthResponseDto() { IsAuthSuccessful = false, ErrorMessage = "Invalid Authentication" };
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return false;
+                return new AuthResponseDto() { IsAuthSuccessful = false, ErrorMessage = e.Message };
             }
         }
     }

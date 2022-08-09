@@ -14,7 +14,13 @@ namespace TechSupportHelpSystem.Controllers
     [Authorize]
     public class ConfigurationController : ControllerBase
     {
-        ConfigurationService ConfigurationService = new ConfigurationService();
+        ConfigurationService ConfigurationService;
+
+        public ConfigurationController()
+        {
+            ConfigurationService = new ConfigurationService();
+        }
+
         // GET: api/<ConfigurationController>
         [HttpGet("{id_Client}")]
         public List<Configuration> Get(int id_Client)

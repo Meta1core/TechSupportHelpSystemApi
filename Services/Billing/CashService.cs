@@ -91,7 +91,7 @@ namespace TechSupportHelpSystem.Services
                     return db.Cash_Fee_Schedule.ToList();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null; // Nlog
             }

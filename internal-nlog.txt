@@ -1,0 +1,371 @@
+2022-08-09 09:46:09.0306 Info Message Template Auto Format enabled
+2022-08-09 09:46:09.0800 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 09:46:09.1994 Info Adding target FileTarget(Name=allfile)
+2022-08-09 09:46:09.2274 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 09:46:09.3397 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 09:46:13.0516 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 09:54:26.2907 Info Message Template Auto Format enabled
+2022-08-09 09:54:26.3525 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 09:54:26.5290 Info Adding target FileTarget(Name=allfile)
+2022-08-09 09:54:26.5666 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 09:54:26.7074 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 09:54:30.1544 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 09:54:54.6150 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 09:54:54.6150 Info Message Template Auto Format enabled
+2022-08-09 09:54:54.6320 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 09:54:54.6537 Info Adding target FileTarget(Name=allfile)
+2022-08-09 09:54:54.6537 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 09:54:54.6537 Info Closing old configuration.
+2022-08-09 09:54:54.6843 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:00:34.2708 Info Message Template Auto Format enabled
+2022-08-09 10:00:34.3399 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:00:34.4270 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:00:34.4479 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:00:34.5172 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:00:36.5969 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:01:19.4558 Info Message Template Auto Format enabled
+2022-08-09 10:01:19.5084 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:01:19.6177 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:01:19.6414 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:01:19.7258 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:01:21.5294 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:02:40.8016 Info Message Template Auto Format enabled
+2022-08-09 10:02:40.8499 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:02:40.9902 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:02:41.0115 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:02:41.1660 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:02:43.8896 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:04:24.9768 Info Message Template Auto Format enabled
+2022-08-09 10:04:25.0106 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:04:25.1062 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:04:25.1270 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:04:25.2034 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:04:27.4895 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:04:37.6045 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:04:37.6045 Info Message Template Auto Format enabled
+2022-08-09 10:04:37.6045 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:04:37.6198 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:04:37.6198 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:04:37.6198 Info Closing old configuration.
+2022-08-09 10:04:37.6443 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:15:05.3690 Info Message Template Auto Format enabled
+2022-08-09 10:15:05.4109 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:15:05.5471 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:15:05.5665 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:15:05.6428 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:15:07.6316 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:15:22.7842 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:15:22.7842 Info Message Template Auto Format enabled
+2022-08-09 10:15:22.7978 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:15:22.7978 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:15:22.7978 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:15:22.7978 Info Closing old configuration.
+2022-08-09 10:15:22.8238 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:18:35.1235 Info Message Template Auto Format enabled
+2022-08-09 10:18:35.1902 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:18:35.3211 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:18:35.3409 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:18:35.4412 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:18:37.3030 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:19:56.2403 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:19:56.2403 Info Message Template Auto Format enabled
+2022-08-09 10:19:56.2559 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:19:56.2903 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:19:56.2903 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:19:56.2903 Info Closing old configuration.
+2022-08-09 10:19:56.3283 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:21:50.5732 Info Message Template Auto Format enabled
+2022-08-09 10:21:50.6023 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:21:50.7107 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:21:50.7263 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:21:50.8076 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=41, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:21:52.6046 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=41, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:23:10.4586 Info Message Template Auto Format enabled
+2022-08-09 10:23:10.4939 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:23:10.5895 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:23:10.6055 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:23:10.6759 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:23:12.3268 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:25:09.9346 Info Message Template Auto Format enabled
+2022-08-09 10:25:09.9779 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:25:10.1463 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:25:10.1692 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:25:10.2452 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:25:11.8122 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:26:06.2469 Info Message Template Auto Format enabled
+2022-08-09 10:26:06.2869 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:26:06.3854 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:26:06.3990 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:26:06.4673 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:26:08.1691 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:29:13.0235 Info Message Template Auto Format enabled
+2022-08-09 10:29:13.1189 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:29:13.3073 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:29:13.3332 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:29:13.4598 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:29:15.1970 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:29:52.7168 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:29:52.7168 Info Message Template Auto Format enabled
+2022-08-09 10:29:52.7168 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:29:52.7434 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:29:52.7434 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:29:52.7449 Info Closing old configuration.
+2022-08-09 10:29:52.7668 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=45, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:30:33.6471 Info Message Template Auto Format enabled
+2022-08-09 10:30:33.6747 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:30:33.7629 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:30:33.7767 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:30:33.8387 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:30:35.5856 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:30:40.3042 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 10:30:40.3042 Info Message Template Auto Format enabled
+2022-08-09 10:30:40.3161 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 10:30:40.3292 Info Adding target FileTarget(Name=allfile)
+2022-08-09 10:30:40.3292 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 10:30:40.3292 Info Closing old configuration.
+2022-08-09 10:30:40.3540 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:07:23.1402 Info Message Template Auto Format enabled
+2022-08-09 11:07:23.2125 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:07:23.3924 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:07:23.4399 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:07:23.5911 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:07:28.1844 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:07:38.0471 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:07:38.0471 Info Message Template Auto Format enabled
+2022-08-09 11:07:38.0471 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:07:38.0471 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:07:38.0471 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:07:38.0667 Info Closing old configuration.
+2022-08-09 11:07:38.0910 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:08:11.2391 Info Message Template Auto Format enabled
+2022-08-09 11:08:11.2759 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:08:11.4180 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:08:11.4854 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:08:11.5728 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:08:13.7594 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:08:19.5531 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:08:19.5531 Info Message Template Auto Format enabled
+2022-08-09 11:08:19.5531 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:08:19.5594 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:08:19.5594 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:08:19.5741 Info Closing old configuration.
+2022-08-09 11:08:19.6353 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:06.9561 Info Message Template Auto Format enabled
+2022-08-09 11:13:07.0025 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:13:07.1109 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:13:07.1285 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:13:07.1990 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:09.4863 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:14.1249 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:14.1249 Info Message Template Auto Format enabled
+2022-08-09 11:13:14.1249 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:13:14.1249 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:13:14.1249 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:13:14.1314 Info Closing old configuration.
+2022-08-09 11:13:14.2190 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:48.7355 Info Message Template Auto Format enabled
+2022-08-09 11:13:48.7925 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:13:48.9405 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:13:48.9591 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:13:49.0299 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:51.4537 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:57.3634 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:13:57.3651 Info Message Template Auto Format enabled
+2022-08-09 11:13:57.3651 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:13:57.3815 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:13:57.3815 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:13:57.3815 Info Closing old configuration.
+2022-08-09 11:13:57.5367 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:16:07.0650 Info Message Template Auto Format enabled
+2022-08-09 11:16:07.1109 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:16:07.2872 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:16:07.3257 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:16:07.4524 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:16:10.4019 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:16:23.4183 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:16:23.4183 Info Message Template Auto Format enabled
+2022-08-09 11:16:23.4183 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:16:23.4274 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:16:23.4519 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:16:23.4519 Info Closing old configuration.
+2022-08-09 11:16:23.4825 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:24:15.6361 Info Message Template Auto Format enabled
+2022-08-09 11:24:15.7406 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:24:15.9232 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:24:15.9532 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:24:16.0426 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:24:19.1723 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:24:42.0463 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:24:42.0463 Info Message Template Auto Format enabled
+2022-08-09 11:24:42.0463 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:24:42.0810 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:24:42.0810 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:24:42.0810 Info Closing old configuration.
+2022-08-09 11:24:42.1213 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:25:06.6474 Info Message Template Auto Format enabled
+2022-08-09 11:25:06.6796 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:25:06.7617 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:25:06.7617 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:25:06.8612 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:25:08.9442 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:25:13.5914 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:25:13.5914 Info Message Template Auto Format enabled
+2022-08-09 11:25:13.5914 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:25:13.5914 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:25:13.5914 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:25:13.5914 Info Closing old configuration.
+2022-08-09 11:25:13.6202 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:42:37.1349 Info Message Template Auto Format enabled
+2022-08-09 11:42:37.1899 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:42:37.3143 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:42:37.3290 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:42:37.3792 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:42:39.1237 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:44:45.6573 Info Message Template Auto Format enabled
+2022-08-09 11:44:45.7036 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:44:45.7847 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:44:45.7983 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:44:45.8521 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:44:47.5101 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:44:59.8707 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:44:59.8707 Info Message Template Auto Format enabled
+2022-08-09 11:44:59.8721 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:44:59.8721 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:44:59.8721 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:44:59.8721 Info Closing old configuration.
+2022-08-09 11:44:59.9096 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:45:31.3765 Info Message Template Auto Format enabled
+2022-08-09 11:45:31.4390 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:45:31.5620 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:45:31.5803 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:45:31.6595 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:45:33.6137 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:45:36.2014 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:45:36.2014 Info Message Template Auto Format enabled
+2022-08-09 11:45:36.2014 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:45:36.2194 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:45:36.2194 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:45:36.2194 Info Closing old configuration.
+2022-08-09 11:45:36.2681 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:47:59.4105 Info Message Template Auto Format enabled
+2022-08-09 11:47:59.4799 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:47:59.6290 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:47:59.7416 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:47:59.8674 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:48:02.3051 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:52:30.8092 Info Message Template Auto Format enabled
+2022-08-09 11:52:30.8590 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:52:31.0183 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:52:31.0366 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:52:31.1008 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:52:33.2653 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:52:37.9778 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:52:37.9778 Info Message Template Auto Format enabled
+2022-08-09 11:52:37.9778 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:52:37.9778 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:52:37.9966 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:52:37.9966 Info Closing old configuration.
+2022-08-09 11:52:38.0255 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:53:05.7981 Info Message Template Auto Format enabled
+2022-08-09 11:53:05.8445 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 11:53:05.9826 Info Adding target FileTarget(Name=allfile)
+2022-08-09 11:53:06.0021 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 11:53:06.1073 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 11:53:09.0480 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:16:44.9826 Info Message Template Auto Format enabled
+2022-08-09 12:16:45.0450 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:16:45.1697 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:16:45.1879 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:16:45.2658 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:16:47.4860 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:30:17.4783 Info Message Template Auto Format enabled
+2022-08-09 12:30:17.5369 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:30:17.6817 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:30:17.7094 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:30:17.8034 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:30:20.5598 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:30:28.5816 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:30:28.5816 Info Message Template Auto Format enabled
+2022-08-09 12:30:28.5816 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:30:28.5816 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:30:28.5816 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:30:28.5816 Info Closing old configuration.
+2022-08-09 12:30:28.6174 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:33:54.7665 Info Message Template Auto Format enabled
+2022-08-09 12:33:54.8033 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:33:54.8989 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:33:54.9228 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:33:54.9886 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:33:57.1998 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:34:17.9247 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:34:17.9247 Info Message Template Auto Format enabled
+2022-08-09 12:34:17.9247 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:34:17.9247 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:34:17.9247 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:34:17.9409 Info Closing old configuration.
+2022-08-09 12:34:17.9691 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:37:24.6377 Info Message Template Auto Format enabled
+2022-08-09 12:37:24.6711 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:37:24.8000 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:37:24.8422 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:37:24.9601 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:37:27.7569 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:37:40.7820 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:37:40.7820 Info Message Template Auto Format enabled
+2022-08-09 12:37:40.7820 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:37:40.7820 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:37:40.7879 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:37:40.7879 Info Closing old configuration.
+2022-08-09 12:37:40.8197 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:45:44.6708 Info Message Template Auto Format enabled
+2022-08-09 12:45:44.7102 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:45:44.8271 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:45:44.8464 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:45:44.9270 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:45:46.8484 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:46:27.5329 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:46:27.5329 Info Message Template Auto Format enabled
+2022-08-09 12:46:27.5329 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:46:27.5329 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:46:27.5329 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:46:27.5497 Info Closing old configuration.
+2022-08-09 12:46:27.5951 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:50:08.8119 Info Message Template Auto Format enabled
+2022-08-09 12:50:08.8446 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:50:08.9599 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:50:08.9913 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:50:09.1134 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:50:11.1346 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:50:20.5933 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:50:20.5933 Info Message Template Auto Format enabled
+2022-08-09 12:50:20.5933 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:50:20.5933 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:50:20.5933 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:50:20.5933 Info Closing old configuration.
+2022-08-09 12:50:20.6220 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:56:17.1733 Info Message Template Auto Format enabled
+2022-08-09 12:56:17.2270 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:56:17.3398 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:56:17.3612 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:56:17.5064 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:56:20.0896 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:57:04.1821 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:57:04.1821 Info Message Template Auto Format enabled
+2022-08-09 12:57:04.1821 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:57:04.1821 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:57:04.2017 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:57:04.2017 Info Closing old configuration.
+2022-08-09 12:57:04.2627 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:58:51.6859 Info Message Template Auto Format enabled
+2022-08-09 12:58:51.7468 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:58:51.8723 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:58:51.8892 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:58:51.9749 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:58:54.3287 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:59:03.4774 Info Loading NLog config from XML file: C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config
+2022-08-09 12:59:03.4774 Info Message Template Auto Format enabled
+2022-08-09 12:59:03.4774 Info Loading assembly: NLog.Web.AspNetCore
+2022-08-09 12:59:03.4935 Info Adding target FileTarget(Name=allfile)
+2022-08-09 12:59:03.4935 Info Adding target FileTarget(Name=ownFile-web)
+2022-08-09 12:59:03.4935 Info Closing old configuration.
+2022-08-09 12:59:03.5237 Info Validating config: TargetNames=allfile, ownFile-web, ConfigItems=39, FilePath=C:\Users\d.stryzhak.VELOX\Desktop\TechSupportHelpSystem\bin\Debug\net5.0\nlog.config

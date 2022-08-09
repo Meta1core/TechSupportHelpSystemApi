@@ -28,7 +28,8 @@ namespace TechSupportHelpSystem.Services.Auth
         {
             var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Password)
+            new Claim(ClaimTypes.AuthenticationMethod, user.Password),
+            new Claim(ClaimTypes.Name, user.Username)
         };
             return claims;
         }

@@ -12,7 +12,14 @@ namespace TechSupportHelpSystem.Controllers
     [Authorize]
     public class ClinicsController : ControllerBase
     {
-        IClinicService ClinicService = new ClinicService();
+        IClinicService ClinicService;
+
+        public ClinicsController()
+        {
+            ClinicService = new ClinicService();
+        }
+
+
 
         // GET: api/<ClinicsController>
         [HttpGet("{id_Client}/")]

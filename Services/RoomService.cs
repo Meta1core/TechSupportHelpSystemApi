@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using TechSupportHelpSystem.DAL;
+using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DAO;
 
@@ -12,7 +13,7 @@ namespace TechSupportHelpSystem.Services
     public class RoomService : IRoomService
     {
         IClientService ClientService = new ClientService();
-        public HttpResponseMessage CreateRoom(int id_Client, Room room)
+        public HttpResponseMessage CreateRoom(int id_Client, Room room, string username)
         {
             try
             {
@@ -22,6 +23,7 @@ namespace TechSupportHelpSystem.Services
                 {
                     db.Schdlr_Resource.Add(room);
                     db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} added room  with ID_Room - {2}| Title - {3} ", id_Client, username, room.ID_Resource, room.Title);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.Created);
             }
@@ -34,7 +36,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage DeleteRoom(int id_Client, int id_Room)
+        public HttpResponseMessage DeleteRoom(int id_Client, int id_Room, string username)
         {
             try
             {
@@ -45,6 +47,7 @@ namespace TechSupportHelpSystem.Services
                     Room room = db.Schdlr_Resource.Where(r => r.ID_Resource == id_Room).FirstOrDefault();
                     db.Schdlr_Resource.Remove(room);
                     db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} deleted room  with ID_Room - {2}| Title - {3} ", id_Client, username, room.ID_Resource, room.Title);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
             }
@@ -57,7 +60,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage EditRoomProcedures(int id_Client, int id_Room, int id_Modality)
+        public HttpResponseMessage EditRoomProcedures(int id_Client, int id_Room, int id_Modality, string username)
         {
             try
             {
@@ -68,6 +71,7 @@ namespace TechSupportHelpSystem.Services
                 {
                     procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality && p.IsHidden == false).ToList();
                     ProcessServicesToRoom(procedures, id_Room, db);
+                    NLogger.Logger.Info("|Client № {0}|User {1} changed room procedures with ID_Room - {2} ", id_Client, username, id_Room);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
@@ -112,7 +116,7 @@ namespace TechSupportHelpSystem.Services
             return rooms;
         }
 
-        public HttpResponseMessage UpdateRoom(int id_Client, Room room)
+        public HttpResponseMessage UpdateRoom(int id_Client, Room room, string username)
         {
             try
             {
@@ -131,6 +135,7 @@ namespace TechSupportHelpSystem.Services
                     roomFromDatabase.SlotsTimeOff = room.SlotsTimeOff;
                     roomFromDatabase.StepValue = room.StepValue;
                     db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} changed room  with ID_Room - {2}| Title - {3} ", id_Client, username, room.ID_Resource, room.Title);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }

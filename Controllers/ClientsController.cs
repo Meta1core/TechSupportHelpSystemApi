@@ -11,7 +11,14 @@ namespace TechSupportHelpSystem.Controllers
     [Authorize]
     public class ClientsController : ControllerBase
     {
-        IClientService ClientService = new ClientService();
+        IClientService ClientService;
+
+        public ClientsController()
+        {
+            ClientService = new ClientService();
+        }
+
+
         // GET: <ClientsController>
         [HttpGet]
         public List<Client> Get()
