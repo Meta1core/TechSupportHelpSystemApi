@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Claims;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Services;
 
@@ -18,9 +19,6 @@ namespace TechSupportHelpSystem.Controllers
         {
             ClinicService = new ClinicService();
         }
-
-
-
         // GET: api/<ClinicsController>
         [HttpGet("{id_Client}/")]
         public List<Clinic> Get(int id_Client)
@@ -38,35 +36,40 @@ namespace TechSupportHelpSystem.Controllers
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post(int id_Client, [FromBody] Clinic clinic)
         {
-            return ClinicService.CreateClinic(id_Client, clinic);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return ClinicService.CreateClinic(id_Client, clinic, currentUserClaims);
         }
 
         // PUT api/<ClinicsController>/5
         [HttpPut("{id_Client}")]
         public HttpResponseMessage Put(int id_Client, [FromBody] Clinic clinic)
         {
-            return ClinicService.UpdateClinic(id_Client, clinic);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return ClinicService.UpdateClinic(id_Client, clinic, currentUserClaims);
         }
 
         // DELETE api/<ClinicsController>/5
         [HttpDelete("{id_Client}/{id_Clinic}")]
         public HttpResponseMessage Delete(int id_Client, int id_Clinic)
         {
-            return ClinicService.DeleteClinic(id_Client, id_Clinic);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return ClinicService.DeleteClinic(id_Client, id_Clinic, currentUserClaims);
         }
 
         // GET: ClinicsController/id_Client/id_Clinic/id_Modality
         [HttpGet("{id_Client}/{id_Clinic}/{id_Modality}")]
         public HttpResponseMessage Get(int id_Client, int id_Clinic, int? id_Modality)
         {
-            return ClinicService.EditClinicProcedures(id_Client, id_Clinic, id_Modality);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return ClinicService.EditClinicProcedures(id_Client, id_Clinic, id_Modality, currentUserClaims);
         }
 
         // GET: ClinicsController/id_Client/id_Clinic/id_Modality
         [HttpDelete("{id_Client}/{id_Clinic}/{id_Modality}")]
         public HttpResponseMessage Delete(int id_Client, int id_Clinic, int? id_Modality)
         {
-            return ClinicService.DeleteClinicProcedures(id_Client, id_Clinic, id_Modality);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return ClinicService.DeleteClinicProcedures(id_Client, id_Clinic, id_Modality, currentUserClaims);
         }
     }
 }

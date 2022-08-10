@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
@@ -13,7 +14,8 @@ namespace TechSupportHelpSystem.Services
     public class RoomService : IRoomService
     {
         IClientService ClientService = new ClientService();
-        public HttpResponseMessage CreateRoom(int id_Client, Room room, string username)
+
+        public HttpResponseMessage CreateRoom(int id_Client, Room room, Claim currentUserClaims)
         {
             try
             {
@@ -23,7 +25,7 @@ namespace TechSupportHelpSystem.Services
                 {
                     db.Schdlr_Resource.Add(room);
                     db.SaveChanges();
-                    NLogger.Logger.Info("|Client № {0}|User {1} added room  with ID_Room - {2}| Title - {3} ", id_Client, username, room.ID_Resource, room.Title);
+                    NLogger.Logger.Info("|Client № {0}|User {1} added room  with ID_Room - {2}| Title - {3} ", id_Client, currentUserClaims.Value, room.ID_Resource, room.Title);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.Created);
             }
@@ -32,11 +34,12 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
+                NLogger.Logger.Error(e);
                 return httpResponse;
             }
         }
 
-        public HttpResponseMessage DeleteRoom(int id_Client, int id_Room, string username)
+        public HttpResponseMessage DeleteRoom(int id_Client, int id_Room, Claim currentUserClaims)
         {
             try
             {
@@ -47,7 +50,7 @@ namespace TechSupportHelpSystem.Services
                     Room room = db.Schdlr_Resource.Where(r => r.ID_Resource == id_Room).FirstOrDefault();
                     db.Schdlr_Resource.Remove(room);
                     db.SaveChanges();
-                    NLogger.Logger.Info("|Client № {0}|User {1} deleted room  with ID_Room - {2}| Title - {3} ", id_Client, username, room.ID_Resource, room.Title);
+                    NLogger.Logger.Info("|Client № {0}|User {1} deleted room  with ID_Room - {2}| Title - {3} ", id_Client, currentUserClaims.Value, room.ID_Resource, room.Title);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
             }
@@ -56,11 +59,76 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
+                NLogger.Logger.Error(e);
                 return httpResponse;
             }
         }
 
-        public HttpResponseMessage EditRoomProcedures(int id_Client, int id_Room, int id_Modality, string username)
+        public HttpResponseMessage UpdateRoom(int id_Client, Room room, Claim currentUserClaims)
+        {
+            try
+            {
+                Client client = ClientService.GetClient(id_Client);
+                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+                using (ApplicationContext db = new ApplicationContext(clientOptions))
+                {
+                    UpdateRoomFields(room, db);
+                    db.SaveChanges();
+                    NLogger.Logger.Info("|Client № {0}|User {1} changed room  with ID_Room - {2}| Title - {3} ", id_Client, currentUserClaims.Value, room.ID_Resource, room.Title);
+                }
+                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                HttpResponseMessage httpResponse = new HttpResponseMessage();
+                httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                httpResponse.ReasonPhrase = e.InnerException.Message;
+                NLogger.Logger.Error(e);
+                return httpResponse;
+            }
+        }
+
+        public Room GetRoom(int id_Client, int id_Room)
+        {
+            try
+            {
+                Room room;
+                Client client = ClientService.GetClient(id_Client);
+                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+                using (ApplicationContext db = new ApplicationContext(clientOptions))
+                {
+                    room = db.Schdlr_Resource.Where(r => r.ID_Resource == id_Room).FirstOrDefault();
+                }
+                return room;
+            }
+            catch (Exception e)
+            {
+                NLogger.Logger.Error(e);
+                return null;
+            }
+        }
+
+        public List<Room> GetRooms(int id_Client)
+        {
+            try
+            {
+                List<Room> rooms;
+                Client client = ClientService.GetClient(id_Client);
+                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
+                using (ApplicationContext db = new ApplicationContext(clientOptions))
+                {
+                    rooms = db.Schdlr_Resource.ToList();
+                }
+                return rooms;
+            }
+            catch (Exception e)
+            {
+                NLogger.Logger.Error(e);
+                return null;
+            }
+        }
+
+        public HttpResponseMessage EditRoomProcedures(int id_Client, int id_Room, int id_Modality, Claim currentUserClaims)
         {
             try
             {
@@ -71,7 +139,7 @@ namespace TechSupportHelpSystem.Services
                 {
                     procedures = db.ProcedureRef.Where(p => p.ID_Modality == id_Modality && p.IsHidden == false).ToList();
                     ProcessServicesToRoom(procedures, id_Room, db);
-                    NLogger.Logger.Info("|Client № {0}|User {1} changed room procedures with ID_Room - {2} ", id_Client, username, id_Room);
+                    NLogger.Logger.Info("|Client № {0}|User {1} changed room procedures| ID_Room - {2} ", id_Client, currentUserClaims.Value, id_Room);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
@@ -80,6 +148,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
+                NLogger.Logger.Error(e);
                 return httpResponse;
             }
         }
@@ -93,59 +162,18 @@ namespace TechSupportHelpSystem.Services
             db.SaveChanges();
         }
 
-        public Room GetRoom(int id_Client, int id_Room)
+        private void UpdateRoomFields(Room room, ApplicationContext db)
         {
-            Room room;
-            Client client = ClientService.GetClient(id_Client);
-            DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-            using (ApplicationContext db = new ApplicationContext(clientOptions))
-            {
-                room = db.Schdlr_Resource.Where(r => r.ID_Resource == id_Room).FirstOrDefault();
-            }
-            return room;
-        }
-        public List<Room> GetRooms(int id_Client)
-        {
-            List<Room> rooms;
-            Client client = ClientService.GetClient(id_Client);
-            DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-            using (ApplicationContext db = new ApplicationContext(clientOptions))
-            {
-                rooms = db.Schdlr_Resource.ToList();
-            }
-            return rooms;
-        }
-
-        public HttpResponseMessage UpdateRoom(int id_Client, Room room, string username)
-        {
-            try
-            {
-                Client client = ClientService.GetClient(id_Client);
-                DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-                using (ApplicationContext db = new ApplicationContext(clientOptions))
-                {
-                    Room roomFromDatabase = db.Schdlr_Resource.Where(r => r.ID_Resource == room.ID_Resource).FirstOrDefault();
-                    roomFromDatabase.Title = room.Title;
-                    roomFromDatabase.ID_Clinic = room.ID_Clinic;
-                    roomFromDatabase.OpenTime = room.OpenTime;
-                    roomFromDatabase.Color = room.Color;
-                    roomFromDatabase.DefaultAppointmentDuration = room.DefaultAppointmentDuration;
-                    roomFromDatabase.SlotsTime = room.SlotsTime;
-                    roomFromDatabase.Sequence = room.Sequence;
-                    roomFromDatabase.SlotsTimeOff = room.SlotsTimeOff;
-                    roomFromDatabase.StepValue = room.StepValue;
-                    db.SaveChanges();
-                    NLogger.Logger.Info("|Client № {0}|User {1} changed room  with ID_Room - {2}| Title - {3} ", id_Client, username, room.ID_Resource, room.Title);
-                }
-                return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-            }
-            catch (Exception e)
-            {
-                HttpResponseMessage httpResponse = new HttpResponseMessage();
-                httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                httpResponse.ReasonPhrase = e.InnerException.Message;
-                return httpResponse;
-            }
+            Room roomFromDatabase = db.Schdlr_Resource.Where(r => r.ID_Resource == room.ID_Resource).FirstOrDefault();
+            roomFromDatabase.Title = room.Title;
+            roomFromDatabase.ID_Clinic = room.ID_Clinic;
+            roomFromDatabase.OpenTime = room.OpenTime;
+            roomFromDatabase.Color = room.Color;
+            roomFromDatabase.DefaultAppointmentDuration = room.DefaultAppointmentDuration;
+            roomFromDatabase.SlotsTime = room.SlotsTime;
+            roomFromDatabase.Sequence = room.Sequence;
+            roomFromDatabase.SlotsTimeOff = room.SlotsTimeOff;
+            roomFromDatabase.StepValue = room.StepValue;
         }
     }
 }

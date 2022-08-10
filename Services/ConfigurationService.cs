@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using TechSupportHelpSystem.DAL;
+using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
@@ -11,6 +13,7 @@ namespace TechSupportHelpSystem.Services
     public class ConfigurationService
     {
         IClientService ClientService = new ClientService();
+
         public List<Configuration> GetClientConfiguration(int id_Client)
         {
             try
@@ -24,11 +27,12 @@ namespace TechSupportHelpSystem.Services
             }
             catch (Exception e)
             {
-                return null; // Nlog
+                NLogger.Logger.Error(e);
+                return null;
             }
         }
 
-        public HttpResponseMessage EditConfigurationParam(int id_Client, Configuration configuration)
+        public HttpResponseMessage EditConfigurationParam(int id_Client, Configuration configuration, Claim currentUserClaims)
         {
             try
             {
@@ -38,18 +42,13 @@ namespace TechSupportHelpSystem.Services
                 {
                     if (db.Configuration.Where(c => c.ParameterName == configuration.ParameterName).FirstOrDefault() is null)
                     {
-                        db.Configuration.Add(configuration);
-                        db.Entry(configuration).State = EntityState.Added;
-                        db.SaveChanges();
+                        AddNewConfigurationParameter(configuration, db);
                     }
                     else
                     {
-                        Configuration configurationFromDatabase = db.Configuration.Where(c => c.ParameterName == configuration.ParameterName).FirstOrDefault();
-                        configurationFromDatabase.ParameterValue = configuration.ParameterValue;
-                        configurationFromDatabase.ID_Clinic = configuration.ID_Clinic;
-                        db.Entry(configurationFromDatabase).State = EntityState.Modified;
-                        db.SaveChanges();
+                        EditConfigurationParameter(configuration, db);
                     }
+                    NLogger.Logger.Info("|Client № {0}|User {1} edited the configuration parameter - {2} | New value {3} ", id_Client, currentUserClaims.Value, configuration.ParameterName, configuration.ParameterValue);
                 }
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
@@ -58,8 +57,25 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
+                NLogger.Logger.Error(e);
                 return httpResponse;
             }
+        }
+
+        private void EditConfigurationParameter(Configuration configuration, ApplicationContext db)
+        {
+            Configuration configurationFromDatabase = db.Configuration.Where(c => c.ParameterName == configuration.ParameterName).FirstOrDefault();
+            configurationFromDatabase.ParameterValue = configuration.ParameterValue;
+            configurationFromDatabase.ID_Clinic = configuration.ID_Clinic;
+            db.Entry(configurationFromDatabase).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        private void AddNewConfigurationParameter(Configuration configuration, ApplicationContext db)
+        {
+            db.Configuration.Add(configuration);
+            db.Entry(configuration).State = EntityState.Added;
+            db.SaveChanges();
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TechSupportHelpSystem.DAL;
+using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 
 namespace TechSupportHelpSystem.Services
@@ -12,23 +13,40 @@ namespace TechSupportHelpSystem.Services
     {
         public Client FindClientByPrefix(string prefix)
         {
-            Client client;
-            using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+            try
             {
-                client = db.Client.Where(c => c.Prefix == prefix).FirstOrDefault();
+                Client client;
+                using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+                {
+                    client = db.Client.Where(c => c.Prefix == prefix).FirstOrDefault();
+                }
+                return client;
             }
-            return client;
+            catch (Exception e)
+            {
+                NLogger.Logger.Error(e);
+                return null;
+            }
         }
 
         public Client GetClient(int id_Client)
         {
-            Client client;
-            using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+            try
             {
-                client = db.Client.Where(c => c.ID_Client == id_Client).FirstOrDefault();
+                Client client;
+                using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+                {
+                    client = db.Client.Where(c => c.ID_Client == id_Client).FirstOrDefault();
+                }
+                return client;
             }
-            return client;
+            catch (Exception e)
+            {
+                NLogger.Logger.Error(e);
+                return null;
+            }
         }
+
         public DbContextOptions GetClientOptions(Client client)
         {
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
@@ -36,14 +54,23 @@ namespace TechSupportHelpSystem.Services
             var options = optionsBuilder.Options;
             return options;
         }
+
         public List<Client> GetClients()
         {
-            List<Client> clients = new List<Client>();
-            using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+            try
             {
-                clients = db.Client.ToList();
+                List<Client> clients = new List<Client>();
+                using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+                {
+                    clients = db.Client.ToList();
+                }
+                return clients;
             }
-            return clients;
+            catch (Exception e)
+            {
+                NLogger.Logger.Error(e);
+                return null;
+            }
         }
 
         private DbContextOptions GetMasterOptions()

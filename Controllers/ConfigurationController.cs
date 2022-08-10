@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Claims;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Services;
 
@@ -31,7 +32,8 @@ namespace TechSupportHelpSystem.Controllers
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post(int id_Client, [FromBody] Configuration configuration)
         {
-            return ConfigurationService.EditConfigurationParam(id_Client, configuration);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return ConfigurationService.EditConfigurationParam(id_Client, configuration, currentUserClaims);
         }
     }
 }

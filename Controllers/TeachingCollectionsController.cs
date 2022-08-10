@@ -31,21 +31,24 @@ namespace TechSupportHelpSystem.Controllers
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post(int id_Client, [FromBody] TeachingCollection teachingCollection)
         {
-            return TeachingCollectionService.AddTeachingCollection(id_Client, teachingCollection, User.FindFirst(ClaimTypes.Name)?.Value);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return TeachingCollectionService.AddTeachingCollection(id_Client, teachingCollection, currentUserClaims);
         }
 
         // PUT <TeachingCollectionsController>/5
         [HttpPut("{id_Client}")]
         public HttpResponseMessage Put(int id_Client, [FromBody] TeachingCollection teachingCollection)
         {
-            return TeachingCollectionService.EditTeachingCollection(id_Client, teachingCollection, User.FindFirst(ClaimTypes.Name)?.Value);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return TeachingCollectionService.EditTeachingCollection(id_Client, teachingCollection, currentUserClaims);
         }
 
         // DELETE <TeachingCollectionsController>/5
         [HttpDelete("{id_Client}/{id_TeachingCollection}")]
         public HttpResponseMessage Delete(int id_Client, int id_TeachingCollection)
         {
-            return TeachingCollectionService.DeleteTeachingCollection(id_Client, id_TeachingCollection, User.FindFirst(ClaimTypes.Name)?.Value);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return TeachingCollectionService.DeleteTeachingCollection(id_Client, id_TeachingCollection, currentUserClaims);
         }
     }
 }

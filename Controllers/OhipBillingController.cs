@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Security.Claims;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.POCO;
 using TechSupportHelpSystem.Services;
@@ -39,23 +40,26 @@ namespace TechSupportHelpSystem.Controllers
 
         // POST api/<OhipBillingController>
         [HttpPost("{id_Client}")]
-        public HttpResponseMessage Post([FromBody] OHIPClinicGroupNumber clinicOptions, int id_Client)
+        public HttpResponseMessage Post([FromBody] OhipClinicNumberDto clinicOptions, int id_Client)
         {
-            return OHIPClinicService.AddClinicOptions(id_Client, clinicOptions);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return OHIPClinicService.AddClinicOptions(id_Client, clinicOptions, currentUserClaims);
         }
 
         // PUT api/<OhipBillingController>/5
         [HttpPut("{id_Client}")]
-        public HttpResponseMessage Put([FromBody] OHIPEditClinicNumberDto clinicOptions, int id_Client)
+        public HttpResponseMessage Put([FromBody] OhipClinicNumberDto clinicOptions, int id_Client)
         {
-            return OHIPClinicService.EditClinicOptions(id_Client, clinicOptions);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return OHIPClinicService.EditClinicOptions(id_Client, clinicOptions, currentUserClaims);
         }
 
         // DELETE api/<OhipBillingController>/5
         [HttpDelete("{id_Client}/{id_Clinic}/{groupNumber}")]
         public HttpResponseMessage Delete(int id_Client, int id_Clinic, string groupNumber)
         {
-            return OHIPClinicService.DeleteClinicOptions(id_Client, id_Clinic, groupNumber);
+            Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
+            return OHIPClinicService.DeleteClinicOptions(id_Client, id_Clinic, groupNumber, currentUserClaims);
         }
     }
 }
