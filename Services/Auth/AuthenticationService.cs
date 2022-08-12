@@ -27,6 +27,7 @@ namespace TechSupportHelpSystem.Services.Auth
             }
             catch (Exception e)
             {
+                NLogger.Logger.Error(e);
                 return new AuthResponseDto() { IsAuthSuccessful = false, ErrorMessage = e.Message };
             }
         }

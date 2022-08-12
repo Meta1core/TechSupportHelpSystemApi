@@ -21,6 +21,7 @@ namespace TechSupportHelpSystem.Controllers
             AuthenticationService = new AuthenticationService();
             _jwtHandler = jwtHandler;
         }
+
         // GET: <AuthenticationController>
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] UserAuthenticationDto userAuthentication)

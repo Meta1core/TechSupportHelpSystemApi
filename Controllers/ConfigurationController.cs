@@ -22,13 +22,14 @@ namespace TechSupportHelpSystem.Controllers
             ConfigurationService = new ConfigurationService();
         }
 
-        // GET: api/<ConfigurationController>
+        // GET: <ConfigurationController>
         [HttpGet("{id_Client}")]
         public List<Configuration> Get(int id_Client)
         {
             return ConfigurationService.GetClientConfiguration(id_Client);
         }
-        // POST api/<ConfigurationController>
+
+        // POST <ConfigurationController>
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post(int id_Client, [FromBody] Configuration configuration)
         {

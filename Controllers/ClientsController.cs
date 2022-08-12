@@ -18,7 +18,6 @@ namespace TechSupportHelpSystem.Controllers
             ClientService = new ClientService();
         }
 
-
         // GET: <ClientsController>
         [HttpGet]
         public List<Client> Get()

@@ -20,7 +20,6 @@ namespace TechSupportHelpSystem.Controllers
             RoomService = new RoomService();
         }
 
-
         // GET: RoomsController
         [HttpGet("{id_Client}")]
         public List<Room> Get(int id_Client)
@@ -43,7 +42,7 @@ namespace TechSupportHelpSystem.Controllers
             return RoomService.EditRoomProcedures(id_Client, id_Room, id_Modality, currentUserClaims);
         }
 
-        // POST api/<RoomsController>
+        // POST <RoomsController>
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post(int id_Client, [FromBody] Room room)
         {
@@ -51,7 +50,7 @@ namespace TechSupportHelpSystem.Controllers
             return RoomService.CreateRoom(id_Client, room, currentUserClaims);
         }
 
-        // PUT api/<RoomsController>/5
+        // PUT <RoomsController>/5
         [HttpPut("{id_Client}")]
         public HttpResponseMessage Put(int id_Client, [FromBody] Room room)
         {
@@ -59,7 +58,7 @@ namespace TechSupportHelpSystem.Controllers
             return RoomService.UpdateRoom(id_Client, room, currentUserClaims);
         }
 
-        // DELETE api/<RoomsController>/5
+        // DELETE <RoomsController>/5
         [HttpDelete("{id_Client}/{id_Room}")]
         public HttpResponseMessage Delete(int id_Client, int id_Room)
         {

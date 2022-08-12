@@ -23,22 +23,21 @@ namespace TechSupportHelpSystem.Controllers
             OHIPClinicService = new OHIPClinicService();
         }
 
-
-        // GET: api/<OhipBillingController>
+        // GET: <OhipBillingController>
         [HttpGet("{id_Client}")]
         public List<OHIPClinicGroupNumber> Get(int id_Client)
         {
             return OHIPClinicService.GetClinicsOptions(id_Client);
         }
 
-        // GET api/<OhipBillingController>/5
+        // GET <OhipBillingController>/5
         [HttpGet("{id_Client}/{id_Clinic}")]
         public List<OHIPClinicGroupNumber> Get(int id_Client, int id_Clinic)
         {
             return OHIPClinicService.GetClinicOptions(id_Client, id_Clinic);
         }
 
-        // POST api/<OhipBillingController>
+        // POST <OhipBillingController>
         [HttpPost("{id_Client}")]
         public HttpResponseMessage Post([FromBody] OhipClinicNumberDto clinicOptions, int id_Client)
         {
@@ -46,7 +45,7 @@ namespace TechSupportHelpSystem.Controllers
             return OHIPClinicService.AddClinicOptions(id_Client, clinicOptions, currentUserClaims);
         }
 
-        // PUT api/<OhipBillingController>/5
+        // PUT <OhipBillingController>/5
         [HttpPut("{id_Client}")]
         public HttpResponseMessage Put([FromBody] OhipClinicNumberDto clinicOptions, int id_Client)
         {
@@ -54,7 +53,7 @@ namespace TechSupportHelpSystem.Controllers
             return OHIPClinicService.EditClinicOptions(id_Client, clinicOptions, currentUserClaims);
         }
 
-        // DELETE api/<OhipBillingController>/5
+        // DELETE <OhipBillingController>/5
         [HttpDelete("{id_Client}/{id_Clinic}/{groupNumber}")]
         public HttpResponseMessage Delete(int id_Client, int id_Clinic, string groupNumber)
         {
