@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.DTO;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -27,7 +28,7 @@ namespace TechSupportHelpSystem.Controllers
 
         // GET: <ClientsController>
         [HttpGet("{prefix}")]
-        public Client Get(string prefix)
+        public ClientResponseDto Get(string prefix)
         {
             return ClientService.FindClientByPrefix(prefix);
         }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.DTO;
 
 namespace TechSupportHelpSystem.Services
 {
@@ -8,7 +9,7 @@ namespace TechSupportHelpSystem.Services
     {
         List<Client> GetClients();
         Client GetClient(int id_Client);
-        Client FindClientByPrefix(string prefix);
+        ClientResponseDto FindClientByPrefix(string prefix);
         DbContextOptions GetClientOptions(Client client);
     }
 }
