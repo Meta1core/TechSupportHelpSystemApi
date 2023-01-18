@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -82,7 +83,10 @@ namespace TechSupportHelpSystem.Services
         public DbContextOptions GetClientOptions(Client client)
         {
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
-            optionsBuilder.UseMySql(client.Connection, new MySqlServerVersion(new Version(5, 7)));
+            var connectionString = new MySqlConnectionStringBuilder(client.Connection);
+            connectionString.UserID = "d.stryzhak";
+            connectionString.Password = "7m5%Yb$s";
+            optionsBuilder.UseMySql(connectionString.ConnectionString, new MySqlServerVersion(new Version(5, 7)));
             var options = optionsBuilder.Options;
             return options;
         }

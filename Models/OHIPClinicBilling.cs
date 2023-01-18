@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TechSupportHelpSystem.Models
 {
-    public class OHIPClinicGroupNumber
+    public class OHIPClinicBilling
     {
         [Key]
         public int ID_Clinic { get; set; }

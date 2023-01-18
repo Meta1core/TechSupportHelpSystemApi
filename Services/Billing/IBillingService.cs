@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
-using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.POCO;
 
 namespace TechSupportHelpSystem.Services
 {
-    interface IOHIPClinicService
+    interface IBillingService<T>
     {
-        public List<OHIPClinicGroupNumber> GetClinicsOptions(int id_Client);
+        public List<T> GetClinicsOptions(int id_Client);
 
-        public List<OHIPClinicGroupNumber> GetClinicOptions(int id_Client, int id_Clinic);
+        public List<T> GetClinicOptions(int id_Client, int id_Clinic);
 
         public HttpResponseMessage EditClinicOptions(int id_Client, OhipClinicNumberDto clinic, Claim currentUserClaims);
 

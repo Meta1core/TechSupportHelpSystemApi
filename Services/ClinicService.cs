@@ -97,7 +97,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    return db.Clinic.Where(c => c.ID_Clinic == id_Clinic).FirstOrDefault();
+                    return db.Clinic.Where(c => c.ID_Clinic == id_Clinic && c.IsObsolete == false).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -115,7 +115,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    return db.Clinic.ToList();
+                    return db.Clinic.Where(c => c.IsObsolete == false).ToList();
                 }
             }
             catch (Exception e)

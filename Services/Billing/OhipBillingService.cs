@@ -11,7 +11,7 @@ using TechSupportHelpSystem.Models.POCO;
 
 namespace TechSupportHelpSystem.Services
 {
-    public class OHIPClinicService : IOHIPClinicService
+    public class OhipBillingService<T> : IBillingService<OHIPClinicBilling>
     {
         IClientService ClientService = new ClientService();
 
@@ -23,7 +23,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    OHIPClinicGroupNumber newClinicOptions = new OHIPClinicGroupNumber() { EDSUserMUID = clinicOptionsDto.EDSUserMUID, GroupNumber = clinicOptionsDto.GroupNumber, ID_Clinic = clinicOptionsDto.ID_Clinic, ID_MOHOffice = clinicOptionsDto.ID_MOHOffice, MasterNumber = clinicOptionsDto.MasterNumber, SLI = clinicOptionsDto.SLI };
+                    OHIPClinicBilling newClinicOptions = new OHIPClinicBilling() { EDSUserMUID = clinicOptionsDto.EDSUserMUID, GroupNumber = clinicOptionsDto.GroupNumber, ID_Clinic = clinicOptionsDto.ID_Clinic, ID_MOHOffice = clinicOptionsDto.ID_MOHOffice, MasterNumber = clinicOptionsDto.MasterNumber, SLI = clinicOptionsDto.SLI };
                     db.Ohip_ClinicNumber.Add(newClinicOptions);
                     db.SaveChanges();
                 }
@@ -48,7 +48,7 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    OHIPClinicGroupNumber clinicOptions = db.Ohip_ClinicNumber.Where(r => r.ID_Clinic.Equals(id_Clinic) && r.GroupNumber.Equals(groupNumber)).FirstOrDefault();
+                    OHIPClinicBilling clinicOptions = db.Ohip_ClinicNumber.Where(r => r.ID_Clinic.Equals(id_Clinic) && r.GroupNumber.Equals(groupNumber)).FirstOrDefault();
                     DeleteOldProcedures(db, new OhipClinicNumberDto() { ID_Clinic = id_Clinic, OldGroupNumber = groupNumber });
                     db.Ohip_ClinicNumber.Remove(clinicOptions);
                     db.SaveChanges();
@@ -70,13 +70,13 @@ namespace TechSupportHelpSystem.Services
         {
             try
             {
-                OHIPClinicGroupNumber clinicOptionsFromDatabase;
+                OHIPClinicBilling clinicOptionsFromDatabase;
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
                     clinicOptionsFromDatabase = db.Ohip_ClinicNumber.Where(r => r.ID_Clinic == clinicOptionsDto.ID_Clinic && r.GroupNumber == clinicOptionsDto.OldGroupNumber).FirstOrDefault();
-                    OHIPClinicGroupNumber ohipClinicGroupNumber = new OHIPClinicGroupNumber() { ID_Clinic = clinicOptionsDto.ID_Clinic, SLI = clinicOptionsDto.SLI, MasterNumber = clinicOptionsDto.MasterNumber, EDSUserMUID = clinicOptionsDto.EDSUserMUID, GroupNumber = clinicOptionsDto.GroupNumber, ID_MOHOffice = clinicOptionsDto.ID_MOHOffice };
+                    OHIPClinicBilling ohipClinicGroupNumber = new OHIPClinicBilling() { ID_Clinic = clinicOptionsDto.ID_Clinic, SLI = clinicOptionsDto.SLI, MasterNumber = clinicOptionsDto.MasterNumber, EDSUserMUID = clinicOptionsDto.EDSUserMUID, GroupNumber = clinicOptionsDto.GroupNumber, ID_MOHOffice = clinicOptionsDto.ID_MOHOffice };
                     EditGroupNumberOnExistsProcedures(clinicOptionsFromDatabase, db, clinicOptionsDto);
                     db.Remove(clinicOptionsFromDatabase);
                     DeleteOldProcedures(db, clinicOptionsDto);
@@ -96,11 +96,11 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public List<OHIPClinicGroupNumber> GetClinicOptions(int id_Client, int id_Clinic)
+        public List<OHIPClinicBilling> GetClinicOptions(int id_Client, int id_Clinic)
         {
             try
             {
-                List<OHIPClinicGroupNumber> clinicOptions;
+                List<OHIPClinicBilling> clinicOptions;
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
@@ -116,11 +116,11 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public List<OHIPClinicGroupNumber> GetClinicsOptions(int id_Client)
+        public List<OHIPClinicBilling> GetClinicsOptions(int id_Client)
         {
             try
             {
-                List<OHIPClinicGroupNumber> clinicsOptions;
+                List<OHIPClinicBilling> clinicsOptions;
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
@@ -136,7 +136,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public void EditGroupNumberOnExistsProcedures(OHIPClinicGroupNumber clinicOptions, ApplicationContext db, OhipClinicNumberDto newClinicOptions)
+        public void EditGroupNumberOnExistsProcedures(OHIPClinicBilling clinicOptions, ApplicationContext db, OhipClinicNumberDto newClinicOptions)
         {
             List<OHIPClinicNumberProcedure> procedures = db.Ohip_ClinicNumberProc.Where(p => p.GroupNumber == clinicOptions.GroupNumber && p.ID_Clinic == clinicOptions.ID_Clinic).ToList();
             if (procedures is not null)

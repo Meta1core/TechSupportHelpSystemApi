@@ -17,7 +17,7 @@ namespace TechSupportHelpSystem.DAL
         public DbSet<CashSchedule> Cash_Fee_Schedule { get; set; }
         public DbSet<TeachingCollection> TeachingCollection { get; set; }
         public DbSet<Configuration> Configuration { get; set; }
-        public DbSet<OHIPClinicGroupNumber> Ohip_ClinicNumber { get; set; }
+        public DbSet<OHIPClinicBilling> Ohip_ClinicNumber { get; set; }
         public DbSet<OHIPClinicNumberProcedure> Ohip_ClinicNumberProc { get; set; }
 
         public ApplicationContext(DbContextOptions options)
@@ -33,7 +33,7 @@ namespace TechSupportHelpSystem.DAL
                 .HasKey(c => new { c.ID_ProcedureRef, c.ID_Clinic });
             modelBuilder.Entity<Configuration>()
                 .HasKey(c => new { c.ParameterName });
-            modelBuilder.Entity<OHIPClinicGroupNumber>()
+            modelBuilder.Entity<OHIPClinicBilling>()
                 .HasKey(c => new { c.ID_Clinic, c.GroupNumber });
             modelBuilder.Entity<OHIPClinicNumberProcedure>()
                 .HasKey(c => new { c.ID_Clinic, c.GroupNumber, c.ID_ProcedureRef });

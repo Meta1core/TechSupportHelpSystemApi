@@ -16,23 +16,23 @@ namespace TechSupportHelpSystem.Controllers
     [Authorize]
     public class OhipBillingController : ControllerBase
     {
-        IOHIPClinicService OHIPClinicService;
+        IBillingService<OHIPClinicBilling> OHIPClinicService;
 
         public OhipBillingController()
         {
-            OHIPClinicService = new OHIPClinicService();
+            OHIPClinicService = new OhipBillingService<OHIPClinicBilling>();
         }
 
         // GET: <OhipBillingController>
         [HttpGet("{id_Client}")]
-        public List<OHIPClinicGroupNumber> Get(int id_Client)
+        public List<OHIPClinicBilling> Get(int id_Client)
         {
             return OHIPClinicService.GetClinicsOptions(id_Client);
         }
 
         // GET <OhipBillingController>/5
         [HttpGet("{id_Client}/{id_Clinic}")]
-        public List<OHIPClinicGroupNumber> Get(int id_Client, int id_Clinic)
+        public List<OHIPClinicBilling> Get(int id_Client, int id_Clinic)
         {
             return OHIPClinicService.GetClinicOptions(id_Client, id_Clinic);
         }

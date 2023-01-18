@@ -21,7 +21,7 @@ namespace TechSupportHelpSystem.Controllers
         }
 
         // GET: <ClinicsController>
-        [HttpGet("{id_Client}/")]
+        [HttpGet("{id_Client}")]
         public List<Clinic> Get(int id_Client)
         {
             return ClinicService.GetClinics(id_Client);
