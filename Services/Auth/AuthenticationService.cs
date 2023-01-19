@@ -54,7 +54,7 @@ namespace TechSupportHelpSystem.Services.Auth
             }
             catch (LdapException ex)
             {
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error(ex);
                 return new AuthResponseDto() { IsAuthSuccessful = false, ErrorMessage = ex.Message };
             }
         }
