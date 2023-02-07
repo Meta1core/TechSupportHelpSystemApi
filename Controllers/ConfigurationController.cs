@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Repositories;
 using TechSupportHelpSystem.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,9 +18,9 @@ namespace TechSupportHelpSystem.Controllers
     {
         ConfigurationService ConfigurationService;
 
-        public ConfigurationController()
+        public ConfigurationController(MasterContext masterContext)
         {
-            ConfigurationService = new ConfigurationService();
+            ConfigurationService = new ConfigurationService(masterContext);
         }
 
         // GET: <ConfigurationController>

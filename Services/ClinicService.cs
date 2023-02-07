@@ -9,12 +9,18 @@ using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.POCO;
+using TechSupportHelpSystem.Repositories;
 
 namespace TechSupportHelpSystem.Services
 {
     public class ClinicService : IClinicService
     {
-        IClientService ClientService = new ClientService();
+        IClientService ClientService;
+
+        public ClinicService(MasterContext masterContext)
+        {
+            this.ClientService = new ClientService(masterContext);
+        }
 
         public HttpResponseMessage CreateClinic(int id_Client, Clinic clinic, Claim currentUserClaims)
         {
@@ -35,7 +41,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|User {1}, Exception: {2}", id_Client, currentUserClaims.Value, e);
                 return httpResponse;
             }
         }
@@ -59,7 +65,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|User {1}, Exception: {2}", id_Client, currentUserClaims.Value, e);
                 return httpResponse;
             }
         }
@@ -84,7 +90,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|User {1}, Exception: {2}", id_Client, currentUserClaims.Value, e);
                 return httpResponse;
             }
         }
@@ -102,7 +108,7 @@ namespace TechSupportHelpSystem.Services
             }
             catch (Exception e)
             {
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}| Exception: {1}", id_Client, e);
                 return null;
             }
         }

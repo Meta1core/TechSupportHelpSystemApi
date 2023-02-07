@@ -11,18 +11,25 @@ using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DTO;
+using TechSupportHelpSystem.Repositories;
 
 namespace TechSupportHelpSystem.Services
 {
     public class ClientService : IClientService
     {
+        private MasterContext masterContext;
+        public ClientService(MasterContext masterContext)
+        {
+            this.masterContext = masterContext;
+        }
+
         public ClientResponseDto FindClientByPrefix(string prefix)
         {
             try
             {
                 Client client;
                 ClientResponseDto clientResponse;
-                using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+                using (MasterContext db = this.masterContext)
                 {
                     client = db.Client.Where(c => c.Prefix.Equals(prefix)).First();
                     clientResponse = new ClientResponseDto() { ID_Client = client.ID_Client, Connection = client.Connection, IsBlocked = client.IsBlocked, Name = client.Name, Prefix = client.Prefix, PortalUrl = client.PortalUrl };
@@ -67,7 +74,7 @@ namespace TechSupportHelpSystem.Services
             try
             {
                 Client client;
-                using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+                using (MasterContext db = this.masterContext)
                 {
                     client = db.Client.Where(c => c.ID_Client == id_Client).FirstOrDefault();
                 }
@@ -96,7 +103,7 @@ namespace TechSupportHelpSystem.Services
             try
             {
                 List<Client> clients = new List<Client>();
-                using (ApplicationContext db = new ApplicationContext(GetMasterOptions()))
+                using (MasterContext db = this.masterContext)
                 {
                     clients = db.Client.ToList();
                 }
@@ -109,8 +116,10 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
+        [Obsolete("GetMasterOptions is deprecated, now app is using DbContextPool for MasterContext")]
         private DbContextOptions GetMasterOptions()
         {
+
             DbContextOptionsBuilder<ApplicationContext> optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)

@@ -1,19 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DTO;
+using TechSupportHelpSystem.Repositories;
 
 namespace TechSupportHelpSystem.Services
 {
     public class CashService : ICashService
     {
-        IClientService ClientService = new ClientService();
+        private IClientService ClientService;
+        private IRepository<CashSchedule> CashRepository;
+
+        public CashService(MasterContext masterContext)
+        {
+            ClientService = new ClientService(masterContext);
+            CashRepository = new CashRepository();
+        }
 
         public HttpResponseMessage AddCashSchedule(int id_Client, CashDto cashSchedule, Claim currentUserClaims)
         {
@@ -35,7 +42,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|User {1}, Exception: {2}", id_Client, currentUserClaims.Value, e);
                 return httpResponse;
             }
         }
@@ -46,13 +53,8 @@ namespace TechSupportHelpSystem.Services
             {
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-                using (ApplicationContext db = new ApplicationContext(clientOptions))
-                {
-                    CashSchedule cashFromDatabase = db.Cash_Fee_Schedule.Where(c => c.ID_CashSchedule == id_CashSchedule).FirstOrDefault();
-                    cashFromDatabase.IsHidden = true;
-                    db.SaveChanges();
-                    NLogger.Logger.Info("|Client № {0}|User {1} hid the cash fee schedule | ID_CashSchedule - {2}| Title - {3} ", id_Client, currentUserClaims.Value, cashFromDatabase.ID_CashSchedule, cashFromDatabase.Name);
-                }
+                CashSchedule hiddenCashSchedule = CashRepository.Delete(clientOptions, id_CashSchedule);
+                NLogger.Logger.Info("|Client № {0}|User {1} hid the cash fee schedule | ID_CashSchedule - {2}| Title - {3} ", id_Client, currentUserClaims.Value, hiddenCashSchedule.ID_CashSchedule, hiddenCashSchedule.Name);
                 return new HttpResponseMessage(System.Net.HttpStatusCode.NoContent);
             }
             catch (Exception e)
@@ -60,7 +62,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|User {1}, Exception: {2}", id_Client, currentUserClaims.Value, e);
                 return httpResponse;
             }
         }
@@ -71,14 +73,8 @@ namespace TechSupportHelpSystem.Services
             {
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-                using (ApplicationContext db = new ApplicationContext(clientOptions))
-                {
-                    CashSchedule cashFromDatabase = db.Cash_Fee_Schedule.Where(r => r.ID_CashSchedule == cashSchedule.CashId).FirstOrDefault();
-                    cashFromDatabase.IsHidden = cashSchedule.IsHidden;
-                    cashFromDatabase.Name = cashSchedule.CashName;
-                    db.SaveChanges();
-                    NLogger.Logger.Info("|Client № {0}|User {1} edited the cash fee schedule | ID_CashSchedule - {2}| New title - {3} ", id_Client, currentUserClaims.Value, cashFromDatabase.ID_CashSchedule, cashFromDatabase.Name);
-                }
+                CashSchedule updatedCashSchedule = CashRepository.Update(clientOptions, new CashSchedule() { ID_CashSchedule = (int)cashSchedule.CashId, IsHidden = (bool)cashSchedule.IsHidden, Name = cashSchedule.CashName });
+                NLogger.Logger.Info("|Client № {0}|User {1} edited the cash fee schedule | ID_CashSchedule - {2}| New title - {3} ", id_Client, currentUserClaims.Value, updatedCashSchedule.ID_CashSchedule, updatedCashSchedule.Name);
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
             catch (Exception e)
@@ -86,7 +82,7 @@ namespace TechSupportHelpSystem.Services
                 HttpResponseMessage httpResponse = new HttpResponseMessage();
                 httpResponse.StatusCode = System.Net.HttpStatusCode.BadRequest;
                 httpResponse.ReasonPhrase = e.InnerException.Message;
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|User {1}, Exception: {2}", id_Client, currentUserClaims.Value, e);
                 return httpResponse;
             }
         }
@@ -97,14 +93,11 @@ namespace TechSupportHelpSystem.Services
             {
                 Client client = ClientService.GetClient(id_Client);
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
-                using (ApplicationContext db = new ApplicationContext(clientOptions))
-                {
-                    return db.Cash_Fee_Schedule.ToList();
-                }
+                return CashRepository.GetAll(clientOptions);
             }
             catch (Exception e)
             {
-                NLogger.Logger.Error(e);
+                NLogger.Logger.Error("|Client № {0}|Exception: {1}", id_Client, e);
                 return null;
             }
         }

@@ -8,12 +8,18 @@ using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DAO;
+using TechSupportHelpSystem.Repositories;
 
 namespace TechSupportHelpSystem.Services
 {
     public class RoomService : IRoomService
     {
-        IClientService ClientService = new ClientService();
+        IClientService ClientService;
+
+        public RoomService(MasterContext masterContext)
+        {
+            ClientService = new ClientService(masterContext);
+        }
 
         public HttpResponseMessage CreateRoom(int id_Client, Room room, Claim currentUserClaims)
         {

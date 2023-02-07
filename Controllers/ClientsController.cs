@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DTO;
+using TechSupportHelpSystem.Repositories;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -14,9 +15,9 @@ namespace TechSupportHelpSystem.Controllers
     {
         IClientService ClientService;
 
-        public ClientsController()
+        public ClientsController(MasterContext masterContext)
         {
-            ClientService = new ClientService();
+            ClientService = new ClientService(masterContext);
         }
 
         // GET: <ClientsController>

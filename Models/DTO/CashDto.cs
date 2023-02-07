@@ -2,8 +2,8 @@
 {
     public class CashDto
     {
-        public int CashId { get; set; }
+        public int? CashId { get; set; }
         public string CashName { get; set; }
-        public bool IsHidden { get; set; }
+        public bool? IsHidden { get; set; }
     }
 }

@@ -7,12 +7,18 @@ using System.Security.Claims;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Repositories;
 
 namespace TechSupportHelpSystem.Services
 {
     public class ConfigurationService
     {
-        IClientService ClientService = new ClientService();
+        IClientService ClientService;
+
+        public ConfigurationService(MasterContext masterContext)
+        {
+            ClientService = new ClientService(masterContext);
+        }
 
         public List<Configuration> GetClientConfiguration(int id_Client)
         {

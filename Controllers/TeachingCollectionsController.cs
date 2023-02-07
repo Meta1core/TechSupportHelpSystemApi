@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Repositories;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -15,9 +16,9 @@ namespace TechSupportHelpSystem.Controllers
     {
         ITeachingCollectionService TeachingCollectionService;
 
-        public TeachingCollectionsController()
+        public TeachingCollectionsController(MasterContext masterContext)
         {
-            TeachingCollectionService = new TeachingCollectionService();
+            TeachingCollectionService = new TeachingCollectionService(masterContext);
         }
 
         // GET: <TeachingCollectionsController>

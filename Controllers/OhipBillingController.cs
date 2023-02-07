@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.POCO;
+using TechSupportHelpSystem.Repositories;
 using TechSupportHelpSystem.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,9 +19,9 @@ namespace TechSupportHelpSystem.Controllers
     {
         IBillingService<OHIPClinicBilling> OHIPClinicService;
 
-        public OhipBillingController()
+        public OhipBillingController(MasterContext masterContext)
         {
-            OHIPClinicService = new OhipBillingService<OHIPClinicBilling>();
+            OHIPClinicService = new OhipBillingService<OHIPClinicBilling>(masterContext);
         }
 
         // GET: <OhipBillingController>

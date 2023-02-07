@@ -7,7 +7,6 @@ namespace TechSupportHelpSystem.DAL
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Client> Client { get; set; }
         public DbSet<Room> Schdlr_Resource { get; set; }
         public DbSet<Modality> Modality { get; set; }
         public DbSet<ProcedureRef> ProcedureRef { get; set; }
@@ -25,6 +24,7 @@ namespace TechSupportHelpSystem.DAL
         {
             Database.EnsureCreated();
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ProceduresToRoomDto>()

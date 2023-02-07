@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.Models;
 using TechSupportHelpSystem.Models.DTO;
+using TechSupportHelpSystem.Repositories;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -16,9 +17,9 @@ namespace TechSupportHelpSystem.Controllers
     {
         ICashService CashService;
 
-        public CashController()
+        public CashController(MasterContext masterContext)
         {
-            CashService = new CashService();
+            CashService = new CashService(masterContext);
         }
 
         // GET: <CashController>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Repositories;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -15,9 +16,9 @@ namespace TechSupportHelpSystem.Controllers
     {
         IClinicService ClinicService;
 
-        public ClinicsController()
+        public ClinicsController(MasterContext masterContext)
         {
-            ClinicService = new ClinicService();
+            ClinicService = new ClinicService(masterContext);
         }
 
         // GET: <ClinicsController>

@@ -7,12 +7,18 @@ using System.Security.Claims;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Repositories;
 
 namespace TechSupportHelpSystem.Services
 {
     public class TeachingCollectionService : ITeachingCollectionService
     {
-        IClientService ClientService = new ClientService();
+        IClientService ClientService;
+
+        public TeachingCollectionService(MasterContext masterContext)
+        {
+            ClientService = new ClientService(masterContext);
+        }
 
         public HttpResponseMessage AddTeachingCollection(int id_Client, TeachingCollection teachingCollection, Claim currentUserClaims)
         {
