@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Security.Claims;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.DTO;
 using TechSupportHelpSystem.Services;
 
 namespace TechSupportHelpSystem.Controllers
@@ -29,7 +30,7 @@ namespace TechSupportHelpSystem.Controllers
 
         // POST <CashController>
         [HttpPost("{id_Client}")]
-        public HttpResponseMessage Post(int id_Client, [FromBody] CashSchedule cashSchedule)
+        public HttpResponseMessage Post(int id_Client, [FromBody] CashDto cashSchedule)
         {
             Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
             return CashService.AddCashSchedule(id_Client, cashSchedule, currentUserClaims);
@@ -37,7 +38,7 @@ namespace TechSupportHelpSystem.Controllers
 
         // PUT <CashController>/5
         [HttpPut("{id_Client}")]
-        public HttpResponseMessage Put(int id_Client, [FromBody] CashSchedule cashSchedule)
+        public HttpResponseMessage Put(int id_Client, [FromBody] CashDto cashSchedule)
         {
             Claim currentUserClaims = User.FindFirst(ClaimTypes.Name);
             return CashService.EditCashSchedule(id_Client, cashSchedule, currentUserClaims);

@@ -7,6 +7,7 @@ using System.Security.Claims;
 using TechSupportHelpSystem.DAL;
 using TechSupportHelpSystem.Log;
 using TechSupportHelpSystem.Models;
+using TechSupportHelpSystem.Models.DTO;
 
 namespace TechSupportHelpSystem.Services
 {
@@ -14,7 +15,7 @@ namespace TechSupportHelpSystem.Services
     {
         IClientService ClientService = new ClientService();
 
-        public HttpResponseMessage AddCashSchedule(int id_Client, CashSchedule cashSchedule, Claim currentUserClaims)
+        public HttpResponseMessage AddCashSchedule(int id_Client, CashDto cashSchedule, Claim currentUserClaims)
         {
             try
             {
@@ -22,10 +23,11 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    db.Cash_Fee_Schedule.Add(cashSchedule);
+                    CashSchedule newCash = new CashSchedule() { Name = cashSchedule.CashName };
+                    db.Cash_Fee_Schedule.Add(newCash);
                     db.SaveChanges();
                 }
-                NLogger.Logger.Info("|Client № {0}|User {1} added the new cash fee schedule | ID_CashSchedule - {2}| Title - {3} ", id_Client, currentUserClaims.Value, cashSchedule.ID_CashSchedule, cashSchedule.Name);
+                NLogger.Logger.Info("|Client № {0}|User {1} added the new cash fee schedule | ID_CashSchedule - {2}| Title - {3} ", id_Client, currentUserClaims.Value, cashSchedule.CashId, cashSchedule.CashName);
                 return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
             }
             catch (Exception e)
@@ -63,7 +65,7 @@ namespace TechSupportHelpSystem.Services
             }
         }
 
-        public HttpResponseMessage EditCashSchedule(int id_Client, CashSchedule cashSchedule, Claim currentUserClaims)
+        public HttpResponseMessage EditCashSchedule(int id_Client, CashDto cashSchedule, Claim currentUserClaims)
         {
             try
             {
@@ -71,9 +73,9 @@ namespace TechSupportHelpSystem.Services
                 DbContextOptions clientOptions = ClientService.GetClientOptions(client);
                 using (ApplicationContext db = new ApplicationContext(clientOptions))
                 {
-                    CashSchedule cashFromDatabase = db.Cash_Fee_Schedule.Where(r => r.ID_CashSchedule == cashSchedule.ID_CashSchedule).FirstOrDefault();
+                    CashSchedule cashFromDatabase = db.Cash_Fee_Schedule.Where(r => r.ID_CashSchedule == cashSchedule.CashId).FirstOrDefault();
                     cashFromDatabase.IsHidden = cashSchedule.IsHidden;
-                    cashFromDatabase.Name = cashSchedule.Name;
+                    cashFromDatabase.Name = cashSchedule.CashName;
                     db.SaveChanges();
                     NLogger.Logger.Info("|Client № {0}|User {1} edited the cash fee schedule | ID_CashSchedule - {2}| New title - {3} ", id_Client, currentUserClaims.Value, cashFromDatabase.ID_CashSchedule, cashFromDatabase.Name);
                 }
