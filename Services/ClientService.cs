@@ -79,7 +79,7 @@ namespace TechSupportHelpSystem.Services
                     }
                 }
             }
-            return null;
+            return fullImageUrl;
         }
 
         public Client GetClient(int id_Client)
