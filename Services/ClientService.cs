@@ -17,10 +17,10 @@ namespace TechSupportHelpSystem.Services
 {
     public class ClientService : IClientService
     {
-        private MasterContext masterContext;
+        private MasterContext _masterContext;
         public ClientService(MasterContext masterContext)
         {
-            this.masterContext = masterContext;
+            this._masterContext = masterContext;
         }
 
         public ClientResponseDto FindClientByPrefix(string prefix)
@@ -29,7 +29,7 @@ namespace TechSupportHelpSystem.Services
             {
                 Client client;
                 ClientResponseDto clientResponse;
-                using (MasterContext db = this.masterContext)
+                using (MasterContext db = this._masterContext)
                 {
                     client = db.Client.Where(c => c.Prefix.Equals(prefix)).First();
                     clientResponse = new ClientResponseDto() { ID_Client = client.ID_Client, Connection = client.Connection, IsBlocked = client.IsBlocked, Name = client.Name, Prefix = client.Prefix, PortalUrl = client.PortalUrl };
@@ -52,21 +52,34 @@ namespace TechSupportHelpSystem.Services
         {
             string clientLogoUrl = "/content/images/logos/";
             if (client.ID_Client < 9) { clientLogoUrl += "000" + client.ID_Client; } else if (client.ID_Client < 100) { clientLogoUrl += "00" + client.ID_Client; } else if (client.ID_Client < 1000) { clientLogoUrl += "0" + client.ID_Client; } else if (client.ID_Client > 999) { clientLogoUrl = client.ID_Client.ToString(); };
+
             string fullImageUrl = clientPortalUrl + clientLogoUrl + ".png";
-            string secondImageUrl = clientPortalUrl + clientLogoUrl + ".jpg";
+            string defaultImageUrl = clientPortalUrl + clientLogoUrl;
+
+            string[] imageTypes = { ".png", ".jpg", ".jpeg" };
+            Stream stream = null;
             using (WebClient webClient = new WebClient())
             {
-                try
+                foreach (string imageType in imageTypes)
                 {
-                    Stream stream = webClient.OpenRead(fullImageUrl);
-                    Bitmap bitmap; bitmap = new Bitmap(stream);
-                    return fullImageUrl;
-                }
-                catch (Exception e)
-                {
-                    return secondImageUrl;
+                    try
+                    {
+                        fullImageUrl = defaultImageUrl + imageType;
+                        stream = webClient.OpenRead(fullImageUrl);
+                        Bitmap bitmap = new Bitmap(stream);
+                        return fullImageUrl;
+                    }
+                    catch (WebException e)
+                    {
+                        if (e.Status == WebExceptionStatus.ProtocolError)
+                        {
+                            continue;
+                        }
+                        else throw new WebException(e.Message);
+                    }
                 }
             }
+            return null;
         }
 
         public Client GetClient(int id_Client)
@@ -74,7 +87,7 @@ namespace TechSupportHelpSystem.Services
             try
             {
                 Client client;
-                using (MasterContext db = this.masterContext)
+                using (MasterContext db = this._masterContext)
                 {
                     client = db.Client.Where(c => c.ID_Client == id_Client).FirstOrDefault();
                 }
@@ -103,7 +116,7 @@ namespace TechSupportHelpSystem.Services
             try
             {
                 List<Client> clients = new List<Client>();
-                using (MasterContext db = this.masterContext)
+                using (MasterContext db = this._masterContext)
                 {
                     clients = db.Client.ToList();
                 }
