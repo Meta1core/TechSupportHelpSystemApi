@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -66,7 +65,6 @@ namespace TechSupportHelpSystem.Services
                     {
                         fullImageUrl = defaultImageUrl + imageType;
                         stream = webClient.OpenRead(fullImageUrl);
-                        Bitmap bitmap = new Bitmap(stream);
                         return fullImageUrl;
                     }
                     catch (WebException e)
